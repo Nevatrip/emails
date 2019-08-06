@@ -1,0 +1,6 @@
+block(page).elem(section).mod(view cooperation) {
+  padding-top: 34px;
+  background-image: url(page__section_view_cooperation.png);
+  background-repeat: no-repeat;
+  background-position: 0px -130px;
+}

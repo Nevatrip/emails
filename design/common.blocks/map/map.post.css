@@ -1,0 +1,6 @@
+block(map) {
+  width: 100%;
+  height: 115.625vw;
+  background-image: url(map.png);
+  background-size: cover;
+}

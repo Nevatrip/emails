@@ -1,0 +1,66 @@
+block(page).elem(section).mod(view header) {
+  box-sizing: border-box;
+  padding-bottom: 2em;
+  padding-top: 8em;
+
+  @media (min-width: 1201px) {
+    padding-top: 12em;
+  }
+
+  elem(content) {
+    box-shadow: 0 0 0 1px #000;
+    padding: 4em 2em;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+    box-shadow:
+      0 1px 1px rgba(0,0,0,0.15),
+      0 10px 0 -5px #eee,
+      0 10px 1px -4px rgba(0,0,0,0.15),
+      0 20px 0 -10px #eee,
+      0 20px 1px -9px rgba(0,0,0,0.15);
+  }
+
+  elem(top) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3em;
+  }
+
+  elem(form) {
+    width: 320px;
+    text-align: right;
+  }
+
+  elem(day),
+  elem(month),
+  elem(year),
+  block(text).mod(underline) {
+    display: inline;
+    padding-bottom: 2px;
+    border-bottom: 1px solid currentColor;
+  }
+
+  elem(stamp) {
+    position: absolute;
+    bottom: 4em;
+    right: 4em;
+    transform: rotate(-24deg);
+    box-shadow: inset 0 0 1px 2px currentColor;
+    color: #1575d4;
+    padding: .5em 2em;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+  }
+
+  elem(heading) {
+    margin-bottom: 1.25em;
+    text-transform: uppercase;
+    letter-spacing: .3em;
+  }
+
+  elem(reasons) {
+    margin-bottom: 1.25em;
+  }
+}

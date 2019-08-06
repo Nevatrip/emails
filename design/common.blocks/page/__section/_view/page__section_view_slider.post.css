@@ -1,0 +1,12 @@
+block(page).elem(section).mod(view slider) {
+  --list-of-index-slider-padding: 39px;
+  --list-of-index-slider-width: calc( 100vw - var( --list-of-index-slider-padding ) * 2 );
+
+  position: relative;
+
+  elem(aside) {
+    position: absolute;
+    bottom: calc( var( --list-of-index-slider-width ) - 24px );
+    right: 0;
+  }
+}
