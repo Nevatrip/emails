@@ -1,3 +1,3 @@
-block('table').elem('header')(
+block( 'table' ).elem( 'header' )(
   
 );

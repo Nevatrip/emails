@@ -1,8 +1,12 @@
 [{
-  shouldDeps: [
-    { mods: { theme: [
-        'light',
-        'dark'
-      ] } }
-  ]
+
 }]
+
+// [{
+//   shouldDeps: [
+//     { mods: { theme: [
+//         'light',
+//         'dark'
+//       ] } }
+//   ]
+// }]

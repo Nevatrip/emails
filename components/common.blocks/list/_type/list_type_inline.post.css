@@ -1,5 +1,0 @@
-block(list).mod(type inline) {
-  .elem(item) {
-    display: inline;
-  }
-}

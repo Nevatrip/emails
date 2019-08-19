@@ -7,14 +7,14 @@ block( 'input' ).mod( 'type', 'range' )(
       const {
         min,
         max,
-        step
+        step,
       } = node._input;
 
       return {
         type: 'range',
         min,
         max,
-        step
+        step,
       }
     } ),
   ),
@@ -30,8 +30,8 @@ block( 'input' ).mod( 'type', 'range' )(
       mix: { block: node.block, elem: node.elem, elemMods: node.elemMods },
       icon: {
         block: 'icon',
-        mods: { symbol: node.elemMods.type }
-      }
+        mods: { symbol: node.elemMods.type },
+      },
     } ) )
   ),
 
@@ -50,7 +50,7 @@ block( 'input' ).mod( 'type', 'range' )(
         min,
         max,
         step,
-        val
+        val,
       } = node._input;
 
       return {
@@ -59,7 +59,7 @@ block( 'input' ).mod( 'type', 'range' )(
         max,
         step,
         value: val,
-        size: max.toString().length
+        size: max.toString().length,
       }
     } ),
   ),
@@ -71,11 +71,11 @@ block( 'input' ).mod( 'type', 'range' )(
         min,
         max,
         minLabel,
-        maxLabel
+        maxLabel,
       } = node._input;
 
-      if( node.elemMods.type === 'min' ) return minLabel || min;
-      if( node.elemMods.type === 'max' ) return maxLabel || max;
+      if ( node.elemMods.type === 'min' ) return minLabel || min;
+      if ( node.elemMods.type === 'max' ) return maxLabel || max;
     } )
   ),
 
@@ -83,20 +83,20 @@ block( 'input' ).mod( 'type', 'range' )(
     content()( [
       { elem: 'output' },
       { elem: 'control' },
-      { elem: 'track' }
+      { elem: 'track' },
     ] )
   ),
 
   content()( [
     {
       elem: 'label',
-      elemMods: { type: 'max' }
+      elemMods: { type: 'max' },
     },
     {
       elem: 'label',
-      elemMods: { type: 'min' }
+      elemMods: { type: 'min' },
     },
-    { elem: 'box' }
+    { elem: 'box' },
 
     // {
     //   elem: 'output-box',

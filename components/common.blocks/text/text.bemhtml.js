@@ -1,3 +1,3 @@
-block('text')(
-  tag()('span')
+block( 'text' )(
+  tag()( 'span' )
 );

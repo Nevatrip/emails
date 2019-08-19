@@ -1,3 +1,3 @@
-block('table').elem('footer')(
+block( 'table' ).elem( 'footer' )(
   
 );

@@ -25,7 +25,7 @@ const bundles = fs
   .filter( file => fs.statSync( path.join( bundlesDir, file ) ).isDirectory() );
 
 // enb make
-function rebuild( event, file ) {
+function rebuild ( event, file ) {
   // TODO: get target via file extention
   // TODO: get current bundle via websocket
   // NOTE: use `[path.join('desktop.bundles', 'index')]` to build specific target
@@ -49,8 +49,8 @@ function rebuild( event, file ) {
 
 const debouncedRebuild = _.debounce( rebuild, 30, { leading: true, trailing: true } );
 
-!config.automake ||
-  watch(
+!config.automake
+  || watch(
     [
       path.join( rootDir, 'components', '*.blocks', '**' ),
       path.join( rootDir, 'design', '*.blocks', '**' ),
@@ -59,8 +59,8 @@ const debouncedRebuild = _.debounce( rebuild, 30, { leading: true, trailing: tru
   ).on( 'all', debouncedRebuild );
 
 // livereload
-!config.livereload ||
-  watch(
+!config.livereload
+  || watch(
     [
       path.join( rootDir, 'static', '**', '*.min.*' ),
       path.join( bundlesDir, '*', '*.bemtree.js' ),
@@ -72,6 +72,6 @@ const debouncedRebuild = _.debounce( rebuild, 30, { leading: true, trailing: tru
     tinyLr.changed( file );
   } );
 
-module.exports = function( app ) {
+module.exports = function ( app ) {
   if ( !app ) return;
 };

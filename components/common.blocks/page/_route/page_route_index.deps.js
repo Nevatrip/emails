@@ -2,33 +2,14 @@
   shouldDeps: [
     {
       block: 'page',
-      elems: [
-        'filter',
-        'orders',
-      ],
     },
     {
-      block: 'form'
+      block: 'email-preamble',
     },
     {
-      block: 'functions',
-      elem: 'debounce',
-    }
-  ],
-}, {
-  tech: 'js',
-  shouldDeps: [
-    {
-      block: 'page',
-      elems: [
-        'filter',
-        'orders',
-      ],
-      tech: 'bemhtml'
+      block: 'email-unit',
+      mods: {type: ['container', 'spacer', 'row']},
+      elems: ['td']
     },
-    {
-      block: 'functions',
-      elem: 'debounce',
-    }
   ],
 } ];

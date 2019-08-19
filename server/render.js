@@ -35,10 +35,10 @@ const render = ( req, res, data = {}, context ) => {
   const cached = cache[ cacheKey ];
 
   if (
-    useCache &&
-    cached &&
-    new Date() - cached.timestamp < config.cacheTTL &&
-    !req.query.dropCache
+    useCache
+    && cached
+    && new Date() - cached.timestamp < config.cacheTTL
+    && !req.query.dropCache
   ) {
     return res.send( cached.html );
   }
@@ -85,8 +85,8 @@ const render = ( req, res, data = {}, context ) => {
     return res.sendStatus( 500 );
   }
 
-  useCache &&
-    ( cache[ cacheKey ] = {
+  useCache
+    && ( cache[ cacheKey ] = {
       timestamp: new Date(),
       html,
     } );

@@ -2,7 +2,7 @@ modules.define( 'input', ( provide, Input ) => {
   provide( Input.declMod( { modName: 'type', modVal: 'range' }, {
     onSetMod: {
       js: {
-        inited() {
+        inited () {
           this.__base.apply( this, arguments );
 
           // const output = this._elem('output-control').domElem;
@@ -45,11 +45,11 @@ modules.define( 'input', ( provide, Input ) => {
         //   const val = output.val();
         //   this.setVal( val );
         // } );
-        }
-      }
+        },
+      },
     },
 
-    outputRender( output, min, max, width ) {
+    outputRender ( output, min, max, width ) {
       const val = this.getVal();
 
       output.val() !== val && output.val( val );
@@ -60,6 +60,6 @@ modules.define( 'input', ( provide, Input ) => {
       const offset = track * ( width - 18 );
 
       output.css( 'transform', `translate( calc( ${ offset }px - 50% ) )` );
-    }
+    },
   } ) );
 } );

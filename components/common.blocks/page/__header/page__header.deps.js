@@ -1,9 +1,0 @@
-[
-  {
-    shouldDeps: [
-      {
-        block: 'header',
-      },
-    ],
-  },
-];
