@@ -1,26 +1,23 @@
-block( 'email-unit' )
-  .mod( 'type', 'spacer' )(
-    tag()( 'table' ),
-    def()( ( node, ctx ) => {
-      ctx.styleTd = ctx.height
-        ? `height:${ ctx.height }px;line-height:${ ctx.height }px;`
-        : ';';
-      return applyNext()
-    } ),
-    content()( ( node, ctx ) => [ {
-      elem: 'tbody',
+block( 'email-unit' ).mod( 'type', 'spacer' )(
+  def()( ( node, ctx ) => {
+    ctx.styleTd = ctx.height
+      ? `height:${ ctx.height }px;line-height:${ ctx.height }px;`
+      : ';';
+    return applyNext()
+  } ),
+  content()( ( node, ctx ) => [ {
+    elem: 'tbody',
+    content: {
+      elem: 'tr',
       content: {
-        elem: 'tr',
+        elem: 'td',
+        styleTd: ctx.styleTd,
         content: {
-          elem: 'td',
-          styleTd: ctx.styleTd,
-          content: {
-            html: '&nbsp;',
-          },
-          attrs: {
-            height: ctx.height,
-            style: ctx.styleTd,
-          },
+          html: '&nbsp;',
+        },
+        attrs: {
+          height: ctx.height,
         },
       },
-    } ] ) );
+    },
+  } ] ) );

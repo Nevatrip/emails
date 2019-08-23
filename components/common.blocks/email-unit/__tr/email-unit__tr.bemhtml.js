@@ -1,14 +1,11 @@
 block( 'email-unit' ).elem( 'tr' )(
   tag()( 'tr' ),
-  addAttrs()( ( node, ctx ) => (
-    {
-      style: ctx.bgcolor ? `background:${ ctx.bgcolor };` : '',
+  addAttrs()( ( node, ctx ) => {
+    const bgcolorStyle = ctx.bgcolor ? `background:${ ctx.bgcolor };` : '';
+
+    return {
+      style: ( ctx.styleTr || '' ) + bgcolorStyle,
       bgcolor: ctx.bgcolor ? ctx.bgcolor : '',
     }
-  ) ),
-  def()( node => {
-    node.emailStyleTr = node.attrs.style;
-    return applyNext()
-  },
-  ),
+  } ),
 );

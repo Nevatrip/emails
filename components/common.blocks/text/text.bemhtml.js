@@ -1,3 +1,0 @@
-block( 'text' )(
-  tag()( 'span' )
-);

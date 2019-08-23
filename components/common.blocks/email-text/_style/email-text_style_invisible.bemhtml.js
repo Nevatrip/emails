@@ -1,9 +1,7 @@
-block( 'email-preamble' )(
-  tag()( 'span' ),
+block( 'email-text' ).mod( 'style', 'invisible' )(
   addAttrs()(
     {
-      style: this.style?`${ this.style };` :''
-        + 'color:transparent;'
+      style: 'color:transparent;'
         + 'font-size:0px;'
         + 'text-align:center;'
         + 'display:block;'
@@ -12,4 +10,5 @@ block( 'email-preamble' )(
         + 'overflow:hidden;',
     },
   ),
+  content()( ( node, ctx ) => ctx.content ),
 );

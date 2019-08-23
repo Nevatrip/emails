@@ -1,14 +1,11 @@
 block( 'email-unit' ).elem( 'tbody' )(
   tag()( 'tbody' ),
-  addAttrs()( ( node, ctx ) => (
-    {
-      style: ctx.bgcolor ? `background:${ ctx.bgcolor };` : '',
+  addAttrs()( ( node, ctx ) => {
+    const bgcolorStyle = ctx.bgcolor ? `background:${ ctx.bgcolor };` : '';
+
+    return {
+      style: ( ctx.styleTbody || '' ) + bgcolorStyle,
       bgcolor: ctx.bgcolor ? ctx.bgcolor : '',
     }
-  ) ),
-  def()( node => {
-    node.emailStyleTbody = node.attrs.style;
-    return applyNext()
-  },
-  ),
+  } ),
 );

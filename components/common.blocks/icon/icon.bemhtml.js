@@ -1,3 +1,0 @@
-block( 'icon' )(
-  tag()( 'span' ),
-);
