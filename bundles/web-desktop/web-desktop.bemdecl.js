@@ -6,7 +6,7 @@ exports.blocks = [
       {
         name: 'route',
         vals: [
-          { name: 'index' }
+          { name: 'web' }
         ]
       }
     ]

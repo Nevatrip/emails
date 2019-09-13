@@ -3,8 +3,9 @@ const generateUrls = require( 'universal-router/generateUrls' );
 
 const home = require( './routes/home' );
 const error = require( './routes/error' );
-const wip = require( './routes/wip' );
 const email = require( './routes/email' );
+const print = require( './routes/print' );
+const web = require( './routes/web' );
 
 const router = new UniversalRouter(
   {
@@ -17,14 +18,19 @@ const router = new UniversalRouter(
         load: async () => await home,
       },
       {
-        path: '/order/:order',
-        name: 'order',
-        load: async () => await wip,
-      },
-      {
         path: '/email',
         name: 'email',
         load: async () => await email,
+      },
+      {
+        path: '/print',
+        name: 'print',
+        load: async () => await print,
+      },
+      {
+        path: '/web',
+        name: 'web',
+        load: async () => await web,
       },
       {
         path: '(.*)',
