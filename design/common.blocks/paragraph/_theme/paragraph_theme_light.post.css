@@ -1,3 +1,0 @@
-block(paragraph).mod(theme light) {
-  --paragraph-color: var(--theme-color-light);
-}

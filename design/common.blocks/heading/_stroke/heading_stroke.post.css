@@ -1,3 +1,0 @@
-block(heading).mod(stroke) {
-  -webkit-text-stroke: 1px var(--heading-text-stroke-color, inherit);
-}

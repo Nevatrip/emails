@@ -1,3 +1,0 @@
-block(button).mod(theme dark) {
-  --button-color: var(--theme-color-dark);
-}

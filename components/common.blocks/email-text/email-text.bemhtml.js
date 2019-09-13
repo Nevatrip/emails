@@ -8,7 +8,8 @@ block( 'email-text' )(
       + `${ ctx.letterSpacing ? `letter-spacing:${ ctx.letterSpacing };` : '' }`
       + `${ ctx.lineHeight ? `line-height:${ ctx.lineHeight };` : '' }`
       + `${ ctx.padding ? `padding:${ ctx.padding };` : '' }`
-      + `${ ctx.textTransform ? `text-transform:${ ctx.textTransform };` : '' }`,
+      + `${ ctx.textTransform ? `text-transform:${ ctx.textTransform };` : '' }`
+      + `${ ctx.textDecoration ? `text-decoration:${ ctx.textDecoration };` : '' }`,
     align: ctx.align ? ctx.align : '',
   } ) ),
 );

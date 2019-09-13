@@ -4,6 +4,7 @@ const generateUrls = require( 'universal-router/generateUrls' );
 const home = require( './routes/home' );
 const error = require( './routes/error' );
 const wip = require( './routes/wip' );
+const email = require( './routes/email' );
 
 const router = new UniversalRouter(
   {
@@ -20,7 +21,11 @@ const router = new UniversalRouter(
         name: 'order',
         load: async () => await wip,
       },
-
+      {
+        path: '/email',
+        name: 'email',
+        load: async () => await email,
+      },
       {
         path: '(.*)',
         name: '404',
