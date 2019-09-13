@@ -3,8 +3,8 @@
 ## Install
 
 ```bash
-git clone git@github.com/nevatrip/orders.git
-cd orders
+git clone git@github.com/nevatrip/emails.git
+cd emails
 cp .env.example .env
 npm install
 ```
