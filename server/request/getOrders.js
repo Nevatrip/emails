@@ -25,7 +25,7 @@ const getOrders = async params => {
     ...params,
   }
 
-  const orders = new Request( 'https://api.nevatrip.ru/orders', { filter } );
+  const orders = new Request( 'https://api.nevatrip.ru/orders', { filter, token: process.env.TOKEN } );
   const response = await orders.request();
 
   return response;
