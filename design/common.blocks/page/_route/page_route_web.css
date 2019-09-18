@@ -1,0 +1,508 @@
+.container.content-container{
+  position: relative;
+  padding: 47px 20px;
+  background: #393c45 url(https://nevatrip.ru/assets/img/email/successbg.jpg) no-repeat center /cover;
+  height: 100%;
+  width: 100%;
+}
+.container.content-container>h1{
+  display: none;
+}
+.footer.navbar-inverse{
+  margin-top: 0;
+}
+.divider {
+  display: none;
+}
+.thanks__wrapper{
+  position: relative;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.thanks__body{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 924px;
+}
+.link{
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.link,
+.link:hover,
+.link:active,
+.link:focus,
+.link:visited,
+.link.active{
+  color: inherit;
+  text-decoration: none;
+}
+.link:hover{
+  opacity: .7;
+}
+.email{
+  margin: 0;
+  border: 15px solid #6999cc;
+  padding: 6px 27px;
+  width: 100%;
+  background: #fff;
+}
+.email__header{
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #6999cc;
+  margin: -15px -27px 0;
+  padding: 3px 0;
+}
+.email__header:before{
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  border-top: 200px solid #6999cc;
+}
+.email__logo{
+  position: relative;
+  z-index: 2;
+  margin: 3px 0 0 0;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 1;
+  transition: opacity .3s ease;
+  width: 98px;
+  max-width: 40%;
+}
+.email__logo,
+.email__logo:hover,
+.email__logo:active,
+.email__logo:focus,
+.email__logo:visited,
+.email__logo.active{
+  color: #fff;
+  text-decoration: none;
+}
+.email__logo:hover{
+  opacity: .7;
+}
+.email__logo-img{
+  width: 100%;
+  display: inline-block;
+}
+.email__print{
+  position: relative;
+  z-index: 2;
+  border: 2px solid #fff;
+  display: inline-block;
+  padding: 1px 17px;
+  opacity: 1;
+  transition: opacity .3s ease;
+
+}
+.email__print,
+.email__print:hover,
+.email__print:active,
+.email__print:focus,
+.email__print:visited,
+.email__print.active{
+  color: #fff;
+  text-decoration: none;
+}
+.email__print:hover{
+  opacity: .7;
+}
+.email__precaption{
+  text-align: center;
+  margin: 18px 0 5px;
+  letter-spacing: 1.1px;
+  color: #a5a5a5;
+}
+.email__h1{
+  color: #252929;
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 29px;
+  margin: 0 0 3px;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  word-wrap: normal;
+}
+.email__h2 .link,
+.email__h2_short .link{
+  text-decoration: underline;
+}
+.email__h1_large{
+  color: #252929;
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 29px;
+  margin: 0 0 3px;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  word-wrap: normal;
+}
+.email__h2{
+  color: #252929;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 0;
+  text-align: center;
+  word-wrap: normal;
+  margin: 0 0 15px;
+}
+.email__h2_short{
+  color: #252929;
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 0;
+  text-align: center;
+  word-wrap: normal;
+  margin: 0 0 15px;
+}
+.email__separator{
+  position: relative;
+  display: block;
+  margin: 0 -27px;
+}
+.email__separator-img{
+  display: block;
+  width: 100%;
+}
+.email__info{
+  display: table;
+  width: 100%;
+}
+.email__info-mark{
+  width: 28px;
+  padding-right: 10px;
+  vertical-align: middle;
+  display: table-cell;
+}
+.email__info-mark img{
+  max-width: 100%;
+  color: #437fbf;
+}
+.email__info-text{
+  display: table-cell;
+  color: #252929;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16.25px !important;
+  text-align: left;
+}
+.email__params{
+  position: relative;
+  margin-right: -27px;
+}
+.email__param{
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  padding-right: 27px;
+  margin-bottom: 8px;
+}
+.email__param-h{
+  color: #514c46;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19px;
+  padding: 0;
+  text-align: left;
+  text-transform: lowercase;
+  margin-bottom: 3px;
+}
+.email__param-p,
+.email__param-p a,
+.email__param-p font{
+  color: #252929 !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 17px !important;
+  line-height: 19px !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+.email__param-p a{
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.email__param-p a,
+.email__param-p a:hover,
+.email__param-p a:active,
+.email__param-p a:focus,
+.email__param-p a:visited,
+.email__param-p a.active{
+  color: #252929;
+  text-decoration: none;
+}
+.email__param-p a:hover{
+  opacity: .7;
+}
+.email__param-p + .email__param-p{
+  margin-top: 2px;
+}
+hr{
+  border-bottom: 2px solid #cacaca;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  clear: both;
+  height: 0;
+  margin: 8px auto 12px;
+}
+.email__map-wrap{
+  position: relative;
+  margin: 10px -1px 10px;
+  text-align: center;
+}
+.email__map-wrap a{
+  width: 100% !important;
+  display: block !important;
+  opacity: 1;
+  transition: opacity .3s ease;
+  margin: 0 auto;
+}
+.email__map-wrap img{
+  display: block !important;
+  width: 100% !important;
+  margin: 0 auto;
+}
+.email__map-wrap a,
+.email__map-wrap a:hover,
+.email__map-wrap a:active,
+.email__map-wrap a:focus,
+.email__map-wrap a:visited{
+  color: inherit;
+  text-decoration: none;
+}
+.email__map-wrap a:hover{
+  opacity: .7;
+}
+.email__map-link-text{
+  font-size: 10px;
+  text-decoration: underline !important;
+  color: #6999cc !important;
+  margin: 3px 0 -3px;
+  text-align: center;
+}
+.email__support{
+  color: #514c46;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  padding: 0;
+  margin: 10px 0 10px;
+  text-align: left;
+}
+.email__tel{
+  white-space: nowrap;
+  display: inline-block;
+}
+.thanks__content{
+  position: relative;
+  background-color: #fff;
+  height: 100%;
+  padding: 41px 33px;
+  width: 43%;
+}
+.thanks__email{
+  position: relative;
+  background-color: #6999cc;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width:55%;
+}
+.thanks__capt{
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 0 8px;
+  letter-spacing: -0.6px;
+}
+.thanks__postcapt{
+  font-size: 24px;
+  margin: 0 0 2px;
+}
+.thanks__num{
+  text-transform: uppercase;
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+.thanks__p{
+  margin: 0 0 12px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.thanks__btns{
+  position: relative;
+  margin: 20px 0 15px;
+}
+.thanks__btn{
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+}
+.thanks__btn-img{
+  position: relative;
+  margin: 0;
+}
+.thanks__promo{
+  /*padding: 15px 0 18px;*/
+  /*margin: 15px 0 17px;*/
+  /*border-top: 1px solid #989796;*/
+  /*border-bottom: 1px solid #989796;*/
+
+  padding: 15px 0 0;
+  margin: 15px 0 0;
+  border-top: 1px solid #989796;
+}
+.thanks__promo-capt{
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0 0 3px;
+  letter-spacing: -0.26px;
+}
+.thanks__promo-content{
+  position: relative;
+  display: table;
+}
+.thanks__promo-txt, .thanks__promo-btn{
+  display: table-cell;
+  vertical-align: middle;
+}
+.thanks__promo-txt{
+  padding: 10px 0 10px 20px;
+  font-weight: 300;
+  font-size: 12px;
+  margin: 0;
+}
+.thanks__promo-btn{
+  margin: 0;
+}
+.thanks__promo-btn-span{
+  background-color: #ffdc38;
+  border-radius: 10px;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 16px;
+  vertical-align: middle;
+  text-align: center;
+  width: 120px;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+.thanks__promo-btn-span:hover,
+.thanks__promo-btn-span:focus,
+.thanks__promo-btn-span:active,
+.thanks__promo-btn-span:visited{
+  color: inherit;
+  text-decoration: none;
+}
+.thanks__gift{
+  position: relative;
+}
+.thanks__gift-caption{
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0 0 11px;
+  letter-spacing: -0.2px;
+}
+.thanks__gift-img{
+  display: block;
+  width: 100%;
+}
+.text_en {
+  display: inline-block;
+  font-size: 0.8em;
+  color: #486482;
+  line-height: 1.2;
+}
+
+@media (max-width: 1000px){
+  .thanks__body{
+    flex-direction: column;
+  }
+  .thanks__email{
+    order: 2;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+  }
+  .thanks__content{
+    order: 1;
+    width: 100%;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+  }
+}
+@media (max-width: 600px){
+  .thanks__content{
+    padding: 22px 20px;
+  }
+}
+@media (max-width: 420px){
+  .thanks__content{
+    padding: 22px 20px;
+  }
+  .thanks__promo-content{
+    display: block;
+  }
+  .thanks__promo-btn{
+    display: block;
+    text-align: center;
+  }
+  .thanks__promo-txt{
+    display: block;
+    padding-left: 0;
+  }
+  .thanks__promo-btn-span{
+    width: 200px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .thanks__promo-txt{
+    padding: 10px 0 1px;
+  }
+}
+@media (max-width: 370px){
+  .thanks__capt{
+    font-size: 24px;
+  }
+  .thanks__postcapt{
+    font-size: 20px;
+  }
+  .email{
+    padding: 6px 14px;
+  }
+  .email__header{
+    margin: -15px -15px 0;
+  }
+  .email__h2{
+    font-size: 18px;
+  }
+  .email__separator{
+    margin: 0 -14px;
+  }
+}

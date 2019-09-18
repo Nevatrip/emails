@@ -1,0 +1,464 @@
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+a {
+  background-color: transparent;
+}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+b,
+strong {
+  font-weight: bolder;
+}
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+img {
+  border-style: none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+button,
+input {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+progress {
+  vertical-align: baseline;
+}
+textarea {
+  overflow: auto;
+}
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+details {
+  display: block;
+}
+summary {
+  display: list-item;
+}
+template {
+  display: none;
+}
+[hidden] {
+  display: none;
+}
+*{
+  box-sizing: border-box;
+}
+.link{
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.link,
+.link:hover,
+.link:active,
+.link:focus,
+.link:visited,
+.link.active{
+  color: inherit;
+  text-decoration: none;
+}
+.link:hover{
+  opacity: .7;
+}
+.email__wrapper{
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 1px 10px;
+  height: 100%;
+  width: 100%;
+  background-color: #F3F3F3;
+  color: #252929;
+  min-height: 100vh;
+}
+.email{
+  margin: 10px auto ;
+  border:7px solid #6999CC;
+  padding: 15px 27px;
+  width: 100%;
+  max-width: 600px;
+  background: #FFFFFF;
+}
+.email__header{
+  position:relative;
+  overflow:hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #6999CC;
+  margin: -17px -29px 0;
+  padding: 3px 0px 6px;
+}
+.email__header:before{
+  content:'';
+  position:absolute;
+  top:-10px;
+  left:-10px;
+  right:-10px;
+  border-top:200px solid #6999CC;
+}
+.email__logo{
+  position:relative;
+  z-index:2;
+  margin: 3px 0 0 7px;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 1;
+  transition: opacity .3s ease;
+  width: 118px;
+  max-width:40%;
+}
+.email__logo,
+.email__logo:hover,
+.email__logo:active,
+.email__logo:focus,
+.email__logo:visited,
+.email__logo.active{
+  color: #ffffff;
+  text-decoration: none;
+}
+.email__logo:hover{
+  opacity: .7;
+}
+.email__logo-img{
+  width: 100%;
+  display: inline-block;
+}
+.email__print{
+  position:relative;
+  z-index:2;
+  border: 3px solid #ffffff;
+  display: inline-block;
+  padding: 3px 23px 3px;
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.email__print,
+.email__print:hover,
+.email__print:active,
+.email__print:focus,
+.email__print:visited,
+.email__print.active{
+  color: #ffffff;
+  text-decoration: none;
+}
+.email__print:hover{
+  opacity: .7;
+}
+.email__precaption{
+  text-align: center;
+  margin:18px 0 5px;
+  letter-spacing: 1.1px;
+  color:#a5a5a5;
+}
+.email__h1{
+  color: #252929;
+  font-family: Arial,sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 29px;
+  margin: 0 0 3px;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  word-wrap: normal;
+}
+.email__h2 .link,
+.email__h2_short .link{
+  text-decoration:underline;
+}
+.email__h1_large{
+  color: #252929;
+  font-family: Arial,sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 29px;
+  margin: 0 0 3px;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  word-wrap: normal;
+}
+.email__h2{
+  color: #252929;
+  font-family: Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 0;
+  text-align: center;
+  word-wrap: normal;
+  margin: 0 0 15px;
+}
+.email__h2_short{
+  color: #252929;
+  font-family: Arial,sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 0;
+  text-align: center;
+  word-wrap: normal;
+  margin: 0 0 15px;
+}
+.email__separator{
+  position: relative;
+  display: block;
+  margin: 0 -27px;
+}
+.email__separator-img{
+  display: block;
+  width: 100%;
+}
+.email__info{
+  display: table;
+  width: 100%;
+}
+.email__info-mark{
+  width: 28px;
+  padding-right: 10px;
+  vertical-align: middle;
+  display: table-cell;
+}
+.email__info-mark img{
+  max-width: 100%;
+  color: #437fbf;
+}
+.email__info-text{
+  display: table-cell;
+  color: #252929;
+  font-family: Arial,sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16.25px !important;
+  text-align: left;
+}
+.email__params{
+  position: relative;
+  margin-right: -27px;
+}
+.email__param{
+  display: inline-block;
+  vertical-align:top;
+  max-width: 100%;
+  padding-right: 27px;
+  margin-bottom: 8px;
+}
+.email__param-h{
+  color: #514c46;
+  font-family: Arial,sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19px;
+  padding: 0;
+  text-align: left;
+  text-transform: lowercase;
+  margin-bottom: 3px;
+}
+.email__param-p,
+.email__param-p a,
+.email__param-p font{
+  color: #252929!important;
+  font-family: Arial,sans-serif!important;
+  font-size: 17px!important;
+  line-height: 19px!important;
+  padding: 0!important;
+  text-align: left!important;
+}
+.email__param-p a{
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.email__param-p a,
+.email__param-p a:hover,
+.email__param-p a:active,
+.email__param-p a:focus,
+.email__param-p a:visited,
+.email__param-p a.active{
+  color: #252929;
+  text-decoration: none;
+}
+.email__param-p a:hover{
+  opacity: .7;
+}
+.email__param-p+.email__param-p{
+  margin-top: 2px;
+}
+hr{
+  border-bottom: 2px solid #cacaca;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  clear: both;
+  height: 0;
+  margin: 8px auto 12px;
+}
+.email__map-wrap{
+  position: relative;
+  margin: 10px -1px 10px;
+  text-align:center;
+}
+.email__map-wrap a{
+  width: 100% !important;
+  display: block!important;
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.email__map-wrap img{
+  display: block!important;
+  width: 100%!important;
+}
+.email__map-wrap a,
+.email__map-wrap a:hover,
+.email__map-wrap a:active,
+.email__map-wrap a:focus,
+.email__map-wrap a:visited{
+  color: inherit;
+  text-decoration: none;
+}
+.email__map-wrap a:hover{
+  opacity: .7;
+}
+.email__map-link-text{
+  font-size:10px;
+  text-decoration:underline!important;
+  color: #6999cc!important;
+  margin: 3px 0 -3px;
+  text-align: center;
+}
+.email__support{
+  color: #514c46;
+  font-family: Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  padding: 0;
+  margin: 10px 0 10px;
+  text-align: left;
+}
+.email__tel{
+  white-space:nowrap;
+  display:inline-block;
+}
+.text_en {
+  display: inline-block;
+  font-size: 0.8em;
+  color: #486482;
+  line-height: 1.2;
+}
+@media print{
+  .email__print,
+  .email__map-wrap a.email__map-link-text{
+    display: none!important;
+  }
+  .email{
+    width: 21cm;
+  }
+  .email__h2 .link,
+  .email__h2_short .link{
+    text-decoration:none;
+  }
+}

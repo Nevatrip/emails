@@ -1,3 +1,0 @@
-block( 'table' )( {
-  tag: 'table',
-} );
