@@ -8,6 +8,7 @@ block( 'page' )
       {
         block: 'email',
         elem: 'content',
+        elemMods: { view: 'email' },
       },
       {
         block: 'email',

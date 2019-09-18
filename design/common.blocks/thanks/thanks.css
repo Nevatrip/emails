@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic-ext');
+
+html,body{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.thanks{
+  box-sizing: border-box;
+  position: relative;
+  padding: 47px 20px;
+  background: #393c45 url(https://nevatrip.ru/assets/img/email/successbg.jpg) no-repeat center /cover;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+.thanks__wrapper{
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.thanks__body{
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 924px;
+}
+.thanks__content{
+  box-sizing: border-box;
+  position: relative;
+  background-color: #fff;
+  height: 100%;
+  padding: 41px 33px;
+  width: 43%;
+}
+.thanks__email{
+  box-sizing: border-box;
+  position: relative;
+  background-color: #6999cc;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width:55%;
+}
+.thanks__capt{
+  box-sizing: border-box;
+  font-size: 29px;
+  font-weight: 300;
+  margin: 0 0 13px;
+  letter-spacing: -0.6px;
+}
+.thanks__postcapt{
+  box-sizing: border-box;
+  font-size: 22.3px;
+  margin: 0 0 5px;
+}
+.thanks__num{
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: 24px;
+  margin: 0 0 16px;
+}
+.thanks__p{
+  box-sizing: border-box;
+  margin: 0 0 12px;
+  font-weight: 300;
+  font-size: 16.8px;
+  line-height: 1.6;
+}
+.thanks__btns{
+  box-sizing: border-box;
+  position: relative;
+  margin: 20px 0 15px;
+}
+.thanks__btn{
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+}
+.thanks__btn-img{
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+}
+.thanks__promo{
+  box-sizing: border-box;
+  padding: 15px 0 0;
+  margin: 15px 0 0;
+  border-top: 1px solid #989796;
+}
+.thanks__promo-capt{
+  box-sizing: border-box;
+  font-weight: 300;
+  font-size: 17.2px;
+  margin: 0 0 3px;
+  letter-spacing: -0.26px;
+}
+.thanks__promo-content{
+  box-sizing: border-box;
+  position: relative;
+  display: table;
+}
+.thanks__promo-txt, .thanks__promo-btn{
+  box-sizing: border-box;
+  display: table-cell;
+  vertical-align: middle;
+}
+.thanks__promo-txt{
+  box-sizing: border-box;
+  padding: 10px 0 10px 20px;
+  font-weight: 300;
+  font-size: 11.3px;
+  line-height: 1.55;
+  margin: 0;
+}
+.thanks__promo-btn{
+  box-sizing: border-box;
+  margin: 0;
+}
+.thanks__promo-btn-span{
+  background-color: #ffdc38;
+  border-radius: 10px;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 17.3px;
+  font-weight: 100;
+  vertical-align: middle;
+  text-align: center;
+  width: 120px;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.thanks__promo-btn-span:hover,
+.thanks__promo-btn-span:focus,
+.thanks__promo-btn-span:active,
+.thanks__promo-btn-span:visited{
+  color: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.thanks__gift{
+  position: relative;
+  box-sizing: border-box;
+}
+.thanks__gift-caption{
+  font-weight: 300;
+  font-size: 18px;
+  margin: 0 0 11px;
+  letter-spacing: -0.2px;
+  box-sizing: border-box;
+}
+.thanks__gift-img{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.text_en {
+  display: inline-block;
+  font-size: 0.8em;
+  color: #486482;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1000px){
+  .thanks__body{
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  .thanks__email{
+    order: 2;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    box-sizing: border-box;
+  }
+  .thanks__content{
+    order: 1;
+    width: 100%;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 600px){
+  .thanks__content{
+    padding: 22px 20px;
+  }
+}
+@media (max-width: 420px){
+  .thanks__content{
+    padding: 22px 20px;
+  }
+  .thanks__promo-content{
+    display: block;
+  }
+  .thanks__promo-btn{
+    display: block;
+    text-align: center;
+  }
+  .thanks__promo-txt{
+    display: block;
+    padding-left: 0;
+  }
+  .thanks__promo-btn-span{
+    width: 200px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .thanks__promo-txt{
+    padding: 10px 0 1px;
+  }
+}
+@media (max-width: 370px){
+  .thanks__capt{
+    font-size: 24px;
+  }
+  .thanks__postcapt{
+    font-size: 20px;
+  }
+}

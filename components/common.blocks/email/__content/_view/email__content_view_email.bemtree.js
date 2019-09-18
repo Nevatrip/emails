@@ -1,4 +1,4 @@
-block( 'email' ).elem( 'content' )( {
+block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
   content: node => {
     const order = node.data.api || {};
     const ntNum = order.payment.Model.InternalId;
