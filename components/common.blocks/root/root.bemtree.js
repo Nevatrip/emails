@@ -3,8 +3,8 @@ const MarkdownBemjson = require( 'markdown-bemjson' );
 
 const builder = imageUrlBuilder(
   {
-    projectId: 'p9gjsb2n',
-    dataset: 'production',
+    projectId: '39dycnz5',
+    dataset: 'develop',
   }
 );
 

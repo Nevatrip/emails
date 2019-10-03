@@ -1,16 +1,44 @@
 block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
   content: node => {
     const order = node.data.api || {};
-    const [ { product: { directions, title: {
-      ru: { name: nameRu },
-      en: { name: nameEn },
-    } }, options } ] = order.products;
-    const [ { direction, number, tickets, event: { start } } ] = options;
+
+    const [
+      {
+        product: {
+          directions,
+          title: {
+            ru: { name: nameRu },
+            en: { name: nameEn },
+          },
+        },
+        options,
+      },
+    ] = order.products;
+
+    const [
+      {
+        direction,
+        number,
+        tickets,
+        event: { start },
+      },
+    ] = options;
 
     const ticketsInOrder = [];
+    let pierNameRu = '';
+    let pierNameEn = '';
+    let pierUrl = '';
+    let pierPhoto = '';
 
-    directions.forEach( ( { _key, tickets: _tickets } ) => {
+    //const timeOffsetTs = 3*3600;//+3hours TimeStamp
+
+    directions.forEach( ( { _key, tickets: _tickets, point: _point } ) => {
       if ( direction === _key ) {
+        pierNameRu = _point.title.ru;
+        pierNameEn = _point.title.en;
+        pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
+        pierPhoto = node._urlFor( _point.image.asset._ref ).url();
+
         _tickets.forEach( _ticket => {
           if ( tickets.hasOwnProperty( _ticket._key ) && tickets[ _ticket._key ] ) {
             ticketsInOrder.push( {
@@ -20,13 +48,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
           }
         } )
       }
-    } )
-
-    //const timeOffsetTs = 3*3600;//+3hours TimeStamp
-    //const pierNameRu = '';
-    //const pierNameEn = '';
-    //const pierUrl = '';
-    //const pierPhoto = '';
+    } );
 
     function convertTsToDay ( unixtimestamp, lang ) {
       const monthsArr = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ];
@@ -342,14 +364,14 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                     //   },
                     // ],
                   }, // время
-                  // {
-                  //   block: 'email-unit',
-                  //   mods: { type: 'param' },
-                  //   title: 'причал',
-                  //   titleEn: 'place of departure',
-                  //   content: 'Дворцовая наб. 18',
-                  //   contentEn: 'Palace Embankment',
-                  // }, // причал
+                  {
+                    block: 'email-unit',
+                    mods: { type: 'param' },
+                    title: 'причал',
+                    titleEn: 'place of departure',
+                    content: pierNameRu,
+                    contentEn: pierNameEn,
+                  }, // причал
                   // {
                   //   block: 'email-unit',
                   //   mods: { type: 'param' },
@@ -498,26 +520,25 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                       }, //spacer,
                     },
                   },
-
-                  // {
-                  //   block: 'email-unit',
-                  //   mods: { type: 'tr' },
-                  //   colspan: 3,
-                  //   content: {
-                  //     block: 'email-unit',
-                  //     mods: { type: 'td' },
-                  //     colspan: 3,
-                  //     valign: 'middle',
-                  //     align: 'center',
-                  //     content: [
-                  //       {
-                  //         block: 'email-map',
-                  //         image: 'https://nevatrip.ru/assets/img/e_from_photo/nevs18-new.jpg',
-                  //         link: 'https://yandex.ru/maps/2/saint-petersburg/?ll=30.322541%2C59.944376&mode=whatshere&whatshere%5Bpoint%5D=30.321994%2C59.944384&whatshere%5Bzoom%5D=17&z=17',
-                  //       },
-                  //     ], // карта
-                  //   },
-                  // },
+                  {
+                    block: 'email-unit',
+                    mods: { type: 'tr' },
+                    colspan: 3,
+                    content: {
+                      block: 'email-unit',
+                      mods: { type: 'td' },
+                      colspan: 3,
+                      valign: 'middle',
+                      align: 'center',
+                      content: [
+                        {
+                          block: 'email-map',
+                          image: pierPhoto,
+                          link: pierUrl,
+                        },
+                      ], // карта
+                    },
+                  },
                 ],
               }, // содержимое: инфо
               {
