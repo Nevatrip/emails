@@ -1,11 +1,26 @@
 block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
   content: node => {
     const order = node.data.api || {};
-    const ntNum = order.payment.Model.InternalId;
-    const nameRu = order.products[ 0 ].product.title.ru.name;
-    const nameEn = order.products[ 0 ].product.title.en.name;
-    const tickets = order.products[ 0 ].product.directions[ 0 ].tickets;
-    const start = order.products[ 0 ].product.directions[ 0 ].schedule[ 0 ].start;
+    const [ { product: { directions, title: {
+      ru: { name: nameRu },
+      en: { name: nameEn },
+    } }, options } ] = order.products;
+    const [ { direction, number, tickets, event: { start } } ] = options;
+
+    const ticketsInOrder = [];
+
+    directions.forEach( ( { _key, tickets: _tickets } ) => {
+      if ( direction === _key ) {
+        _tickets.forEach( _ticket => {
+          if ( tickets.hasOwnProperty( _ticket._key ) && tickets[ _ticket._key ] ) {
+            ticketsInOrder.push( {
+              name: `${ _ticket.category.name.current === 'standart' ? '' : `${ _ticket.category.title }` }${ _ticket.name }`,
+              count: tickets[ _ticket._key ],
+            } )
+          }
+        } )
+      }
+    } )
 
     //const timeOffsetTs = 3*3600;//+3hours TimeStamp
     //const pierNameRu = '';
@@ -25,8 +40,8 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
         zero = '0'
       }
       return lang === 'en'
-        ?`${ month }.${ zero }${ day }.${ year }`
-        :`${ zero }${ day }.${ month }.${ year }`;
+        ? `${ month }/${ zero }${ day }/${ year }`
+        : `${ zero }${ day }.${ month }.${ year }`;
     }//dd.mm.yyyy/mm.dd.yyyy из timestamp
 
     let dateRu;
@@ -209,7 +224,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                       letterSpacing: '.8px !important',
                       lineHeight: '50px !important',
                       textTransform: 'uppercase !important',
-                      content: `NT${ ntNum }`,
+                      content: `NT${ number }`,
                     },
                   }, // номер билета todo: если 2 номера то другой стиль
                   {
@@ -370,7 +385,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                     mods: { type: 'param' },
                     title: 'билеты',
                     titleEn: 'tickets',
-                    content: tickets.map( item => item.count && {
+                    content: ticketsInOrder.map( item => item.count && {
                       block: 'email-unit',
                       mods: { type: 'param-ticket' },
                       name: item.name,
