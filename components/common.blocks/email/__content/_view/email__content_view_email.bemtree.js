@@ -520,7 +520,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                       }, //spacer,
                     },
                   },
-                  {
+                  pierPhoto && {
                     block: 'email-unit',
                     mods: { type: 'tr' },
                     colspan: 3,
@@ -921,4 +921,4 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
       },
     } ]
   },
-} )
+} );

@@ -1,5 +1,6 @@
 const imageUrlBuilder = require( '@sanity/image-url' );
-const MarkdownBemjson = require( 'markdown-bemjson' );
+
+// const MarkdownBemjson = require( 'markdown-bemjson' );
 
 const builder = imageUrlBuilder(
   {
@@ -8,21 +9,21 @@ const builder = imageUrlBuilder(
   }
 );
 
-const markdownBemjson = new MarkdownBemjson( {
-  isEscapeHtml: true,
-  wrapper: false,
-  markdown: {
-    breaks: true,
-  },
-  rules: {
-    br () {
-      return {
-        // block: 'br',
-        tag: 'br',
-      }
-    },
-  },
-} );
+// const markdownBemjson = new MarkdownBemjson( {
+//   isEscapeHtml: true,
+//   wrapper: false,
+//   markdown: {
+//     breaks: true,
+//   },
+//   rules: {
+//     br () {
+//       return {
+//         // block: 'br',
+//         tag: 'br',
+//       }
+//     },
+//   },
+// } );
 
 block( 'root' ).replace()( ( node, ctx ) => {
   const level = ctx.level || 'desktop';
@@ -33,7 +34,8 @@ block( 'root' ).replace()( ( node, ctx ) => {
   if ( ctx.context ) return ctx.context;
 
   node._urlFor = source => builder.image( source );
-  node._fromMarkdown = markdown => markdownBemjson.convert( markdown );
+
+  // node._fromMarkdown = markdown => markdownBemjson.convert( markdown );
 
   return {
     block: 'page',

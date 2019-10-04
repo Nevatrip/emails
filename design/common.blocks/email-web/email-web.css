@@ -159,6 +159,9 @@
   width: 100%;
   box-sizing: border-box;
 }
+.email-web__info .text-en{
+  margin-top: 4px;
+}
 .email-web__info-mark{
   width: 28px;
   padding-right: 10px;

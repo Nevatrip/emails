@@ -1,0 +1,33 @@
+.email__content_view_print{
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 1px 10px;
+  height: 100%;
+  width: 100%;
+  background-color: #F3F3F3;
+  color: #252929;
+  min-height: 100vh;
+}
+.email__content_view_print .email-web{
+  margin: 10px auto ;
+  border:7px solid #6999CC;
+  padding: 15px 27px;
+  width: 100%;
+  max-width: 600px;
+  background: #FFFFFF;
+}
+@media print{
+  .email-web__print,
+  .email-web__map-wrap a.email__map-link-text{
+    display: none!important;
+  }
+  .email-web{
+    width: 21cm;
+  }
+  .email-web__h2 .link,
+  .email-web__h2_short .link{
+    text-decoration:none;
+  }
+}
