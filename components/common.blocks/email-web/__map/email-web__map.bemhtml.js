@@ -2,6 +2,7 @@ block( 'email-web' ).elem( 'map' )(
   content()( ( node, ctx ) => [
     {
       block: 'link',
+
       //url: ctx.link,
       attrs: {
         width: '540',

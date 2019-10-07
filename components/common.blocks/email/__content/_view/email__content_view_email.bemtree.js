@@ -847,71 +847,71 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
             mods: { type: 'spacer' },
             height: '5',
           }, //spacer
-          // {
-          //   block: 'email-text',
-          //   mods: {
-          //     tag: 'p',
-          //   },
-          //   color: '#FFFFFF',
-          //   fontSize: '14px',
-          //   fontWeight: '400',
-          //   lineHeight: '19px',
-          //   align: 'center',
-          //   content: [
-          //     {
-          //       tag: 'b',
-          //       content: 'Если сообщение отображается некорректно, нажмите ',
-          //     },
-          //     {
-          //       block: 'link',
-          //       url: '#',
-          //       attrs: {
-          //         style: 'Margin: 0; color: #FFFFFF; font-family: Arial,sans-serif; font-weight: 400; '
-          //           + 'line-height: 20px; margin: 0; padding: 0; text-align: left; text-decoration: none;',
-          //       },
-          //       content: {
-          //         block: 'email-text',
-          //         color: '#FFFFFF',
-          //         textDecoration: 'underline',
-          //         mods: {
-          //           tag: 'font',
-          //         },
-          //         content: 'здесь',
-          //       },
-          //     },
-          //     {
-          //       tag: 'br',
-          //     },
-          //     {
-          //       block: 'email-text',
-          //       color: '#FFFFFF',
-          //       fontSize: '11.2',
-          //       mods: {
-          //         tag: 'font',
-          //       },
-          //       content: [
-          //         'If the message is not displayed correctly, click ',
-          //         {
-          //           block: 'link',
-          //           url: '#',
-          //           attrs: {
-          //             style: 'Margin: 0; color: #FFFFFF; font-family: Arial,sans-serif; font-weight: 400; '
-          //               + 'line-height: 20px; margin: 0; padding: 0; text-align: left; text-decoration: none;',
-          //           },
-          //           content: {
-          //             block: 'email-text',
-          //             color: '#FFFFFF',
-          //             textDecoration: 'underline',
-          //             mods: {
-          //               tag: 'font',
-          //             },
-          //             content: 'here',
-          //           },
-          //         },
-          //       ],
-          //     },
-          //   ],
-          // },
+          {
+            block: 'email-text',
+            mods: {
+              tag: 'p',
+            },
+            color: '#FFFFFF',
+            fontSize: '14px',
+            fontWeight: '400',
+            lineHeight: '19px',
+            align: 'center',
+            content: [
+              {
+                tag: 'b',
+                content: 'Если сообщение отображается некорректно, нажмите ',
+              },
+              {
+                block: 'link',
+                url: '#',
+                attrs: {
+                  style: 'Margin: 0; color: #FFFFFF; font-family: Arial,sans-serif; font-weight: 400; '
+                    + 'line-height: 20px; margin: 0; padding: 0; text-align: left; text-decoration: none;',
+                },
+                content: {
+                  block: 'email-text',
+                  color: '#FFFFFF',
+                  textDecoration: 'underline',
+                  mods: {
+                    tag: 'font',
+                  },
+                  content: 'здесь',
+                },
+              },
+              {
+                tag: 'br',
+              },
+              {
+                block: 'email-text',
+                color: '#FFFFFF',
+                fontSize: '11.2',
+                mods: {
+                  tag: 'font',
+                },
+                content: [
+                  'If the message is not displayed correctly, click ',
+                  {
+                    block: 'link',
+                    url: '#',
+                    attrs: {
+                      style: 'Margin: 0; color: #FFFFFF; font-family: Arial,sans-serif; font-weight: 400; '
+                        + 'line-height: 20px; margin: 0; padding: 0; text-align: left; text-decoration: none;',
+                    },
+                    content: {
+                      block: 'email-text',
+                      color: '#FFFFFF',
+                      textDecoration: 'underline',
+                      mods: {
+                        tag: 'font',
+                      },
+                      content: 'here',
+                    },
+                  },
+                ],
+              },
+            ],
+          },
           {
             block: 'email-unit',
             mods: { type: 'spacer' },

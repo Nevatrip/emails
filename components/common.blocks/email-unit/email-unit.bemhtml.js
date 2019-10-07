@@ -8,11 +8,12 @@ block( 'email-unit' )(
         + 'padding:0;'
         + 'max-width:100%;'
         + `width:${ ctx.width ? `${ ctx.width }px` : '100%;' };`
-        + `${ ctx.bgcolor ? `background:${ ctx.bgcolor };` : '' }`,
+        + `${ ctx.bgcolor ? `background:${ ctx.bgcolor };` : '' }`
+        + `${ ctx.border ? `border:${ ctx.border };` : '' }`,
     bgcolor: ctx.bgcolor ? ctx.bgcolor : '',
     width: ctx.width ? ctx.width : '',
-    cellpadding: 0,
-    cellspacing: 0,
+    cellpadding: ctx.cellpadding ? ctx.cellpadding : 0,
+    cellspacing: ctx.cellspacing ? ctx.cellspacing : 0,
     border: 0,
   } ) ),
 );

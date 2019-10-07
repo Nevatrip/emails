@@ -6,7 +6,7 @@ block( 'page' )
       },
       {
         block: 'link',
-        url: '/email',
+        url: `/email?order=${ process.env.ORDER_ID }`,
         content: 'EMAIL',
       },
       {
@@ -17,7 +17,7 @@ block( 'page' )
       },
       {
         block: 'link',
-        url: '/print',
+        url: `/print?order=${ process.env.ORDER_ID }`,
         content: 'PRINT',
       },
       {
@@ -28,8 +28,19 @@ block( 'page' )
       },
       {
         block: 'link',
-        url: '/web',
+        url: `/web?order=${ process.env.ORDER_ID }`,
         content: 'WEB',
+      },
+      {
+        tag: 'br',
+      },
+      {
+        tag: 'br',
+      },
+      {
+        block: 'link',
+        url: `/operator?order=${ process.env.ORDER_ID }`,
+        content: 'OPERATOR',
       },
       {
         tag: 'br',
