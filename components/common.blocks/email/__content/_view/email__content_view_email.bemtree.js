@@ -30,7 +30,9 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
     let pierUrl = '';
     let pierPhoto = '';
 
-    //const timeOffsetTs = 3*3600;//+3hours TimeStamp
+    const browserTimeOffsetTs = ( new Date() ).getTimezoneOffset() * 60;// смещение часового пояса относительно часового пояса UTC в секундаз для текущей локали
+    const tourTimeOffsetTs = -3*3600;
+    const currentTimeOffsetTs = browserTimeOffsetTs - tourTimeOffsetTs;
 
     directions.forEach( ( { _key, tickets: _tickets, point: _point } ) => {
       if ( direction === _key ) {
@@ -52,7 +54,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
 
     function convertTsToDay ( unixtimestamp, lang ) {
       const monthsArr = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ];
-      const date = new Date( unixtimestamp*1000 );
+      const date = new Date( unixtimestamp*1000 + currentTimeOffsetTs );
       const year = date.getFullYear();
       const month = monthsArr[ date.getMonth() ];
       const day = date.getDate();
@@ -69,7 +71,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
     let dateRu;
     let dateEn;
 
-    const dateTs = ( new Date( start ) ).getTime() / 1000; // получить timestamp даты прогулки
+    const dateTs = ( new Date( start ) ).getTime() / 1000 + currentTimeOffsetTs; // получить timestamp даты прогулки
     const hour = `0${ ( new Date( dateTs * 1000 ) ).getHours() }`.substr( -2 );// двузначное число часов старта прогулки
     const minutes = `0${ ( new Date( dateTs * 1000 ) ).getMinutes() }`.substr( -2 );// двузначное число часов старта прогулки
     const clock = `${ hour }:${ minutes }`;
