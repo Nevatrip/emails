@@ -42,10 +42,10 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
         directionTitle = _title;
 
         _tickets.forEach( _ticket => {
-          if ( tickets.hasOwnProperty( _ticket._key ) && tickets[ _ticket._key ] ) {
+          if ( tickets.hasOwnProperty( _ticket._key ) ) {
             ticketsInOrder.push( {
               name: `${ _ticket.category.name.current === 'standart' ? '' : `${ _ticket.category.title }` }${ _ticket.name }`,
-              count: tickets[ _ticket._key ],
+              count: tickets[ _ticket._key ] || 0,
             } );
             totalTickets += tickets[ _ticket._key ];
           }
@@ -366,13 +366,11 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
                   block: 'email-unit',
                   mods: { type: 'td' },
                   colspan: 2,
-                  content: ticketsInOrder.map( item => item.count && {
+                  content: ticketsInOrder.map( item => item && {
                     block: 'email-unit',
                     mods: { type: 'param-ticket' },
                     name: item.name,
                     quantity: item.count,
-
-                    //nameEn: item.nameEn,
                   }, ),
                 },
               ],
