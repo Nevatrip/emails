@@ -9,8 +9,32 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
         product: {
           directions,
           title: {
-            ru: { name: nameRu },
-            en: { name: nameEn },
+            ru: {
+              name: nameRu,
+              key: {
+                current: aliasRu,
+              },
+            },
+            en: {
+              name: nameEn,
+              key: {
+                current: aliasEn,
+              },
+            },
+          },
+          category: {
+            title: {
+              en: {
+                key: {
+                  current: categoryEn,
+                },
+              },
+              ru: {
+                key: {
+                  current: categoryRu,
+                },
+              },
+            },
           },
         },
         options,
@@ -152,7 +176,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
             content: [
               {
                 block: 'link',
-                url: 'https://nevatrip.ru/',
+                url: `https://nevatrip.ru/${ categoryRu }/${ aliasRu }`,
                 title: 'Посмотреть на сайте',
                 target: '_blank',
                 content: {
@@ -163,7 +187,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
               nameEn && {
                 block: 'link',
                 mix: { block: 'text_en' },
-                url: 'https://en.nevatrip.ru/',
+                url: `https://en.nevatrip.ru/${ categoryEn }/${ aliasEn }`,
                 title: 'Check on the web site',
                 target: '_blank',
                 content: nameEn,
