@@ -15,7 +15,7 @@ block( 'email-map' )(
         attrs: {
           width: '540',
           style: '-ms-interpolation-mode:bicubic;display:inline-block;height:auto;max-width:100%;outline:0;'
-            + 'text-decoration:none;width:540px !important;background-color:#aacbda;text-align:center;padding:10px;',
+            + 'text-decoration:none;width:540px !important;background-color:#aacbda;text-align:center;padding:0;',
         },
       },
     },
