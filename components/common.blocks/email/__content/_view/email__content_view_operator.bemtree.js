@@ -11,6 +11,9 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
           title: {
             ru: { name: nameRu },
           },
+          partner: {
+            partnerContract: partnerNumber,
+          } = {},
         },
         options,
       },
@@ -120,7 +123,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
                 {
                   block: 'email-unit',
                   mods: { type: 'td' },
-                  content: '#',
+                  content: partnerNumber,
                 },
               ],
             },
