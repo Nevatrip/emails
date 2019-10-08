@@ -154,22 +154,21 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                   elem: 'td',
                   width: '125',
                   verticalAlign: 'middle',
-
-                  // content: {
-                  //   block: 'email-unit',
-                  //   mods: { type: 'button' },
-                  //   color: '#ffffff',
-                  //   border: '3px solid #fff',
-                  //   fontWeight: '15px',
-                  //   lineHeight: '15px',
-                  //   fontSize: '15px',
-                  //   padding: '9px 3px 8px',
-                  //   bgColor: 'transparent',
-                  //   url: '#',
-                  //   content: {
-                  //     html: '<b>Печать</b>&nbsp;/&nbsp;Print',
-                  //   },
-                  // },
+                  content: {
+                    block: 'email-unit',
+                    mods: { type: 'button' },
+                    color: '#ffffff',
+                    border: '3px solid #fff',
+                    fontWeight: '15px',
+                    lineHeight: '15px',
+                    fontSize: '15px',
+                    padding: '9px 3px 8px',
+                    bgColor: 'transparent',
+                    url: process.env.EMAIL_URL_PRINT,
+                    content: {
+                      html: '<b>Печать</b>&nbsp;/&nbsp;Print',
+                    },
+                  },
 
                 }, //печать
               ],
@@ -866,7 +865,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
               },
               {
                 block: 'link',
-                url: '#',
+                url: process.env.EMAIL_URL_WEB,
                 attrs: {
                   style: 'Margin: 0; color: #FFFFFF; font-family: Arial,sans-serif; font-weight: 400; '
                     + 'line-height: 20px; margin: 0; padding: 0; text-align: left; text-decoration: none;',
@@ -895,7 +894,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                   'If the message is not displayed correctly, click ',
                   {
                     block: 'link',
-                    url: '#',
+                    url: process.env.EMAIL_URL_WEB,
                     attrs: {
                       style: 'Margin: 0; color: #FFFFFF; font-family: Arial,sans-serif; font-weight: 400; '
                         + 'line-height: 20px; margin: 0; padding: 0; text-align: left; text-decoration: none;',

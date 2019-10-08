@@ -111,7 +111,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
               {
                 block: 'link',
                 mix: { block: 'email-web', elem: 'print' },
-                url: '#',
+                url: process.env.EMAIL_URL_PRINT,
                 content: [
                   {
                     tag: 'b',
