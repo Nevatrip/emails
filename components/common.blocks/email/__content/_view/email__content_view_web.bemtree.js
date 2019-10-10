@@ -54,17 +54,21 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
     let pierNameEn = '';
     let pierUrl = '';
     let pierPhoto = '';
+    let ticketInfoRu = '';
+    let ticketInfoEn = '';
 
     const browserTimeOffsetTs = ( new Date() ).getTimezoneOffset() * 60;// смещение часового пояса относительно часового пояса UTC в секундаз для текущей локали
     const tourTimeOffsetTs = -3*3600;
     const currentTimeOffsetTs = browserTimeOffsetTs - tourTimeOffsetTs;
 
-    directions.forEach( ( { _key, tickets: _tickets, point: _point } ) => {
+    directions.forEach( ( { _key, tickets: _tickets, point: _point, ticketInfo: _ticketInfo } ) => {
       if ( direction === _key ) {
         pierNameRu = _point.title.ru;
         pierNameEn = _point.title.en;
         pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
         pierPhoto = node._urlFor( _point.image.asset._ref ).url();
+        ticketInfoRu = ( _ticketInfo || {} ).ru;
+        ticketInfoEn = ( _ticketInfo || {} ).en;
 
         _tickets.forEach( _ticket => {
           if ( tickets.hasOwnProperty( _ticket._key ) && tickets[ _ticket._key ] ) {
@@ -218,7 +222,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
                       {
                         tag: 'b',
                         content: {
-                          html: 'Билет распечатывать не&nbsp;обязательно, зарегистрируйтесь на&nbsp;рейс '
+                          html: ticketInfoRu || 'Билет распечатывать не&nbsp;обязательно, зарегистрируйтесь на&nbsp;рейс '
                             + 'перед посадкой, сообщив &#8470; электронного билета кассиру, '
                             + 'и&nbsp;получите посадочный билет. Вам необходимо подойти за&nbsp;15-20 '
                             + 'минут до&nbsp;отправления рейса (в&nbsp;выходные для метеоров&nbsp;&mdash; заранее)',
@@ -227,7 +231,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
                       {
                         block: 'text-en',
                         content: {
-                          html: 'You do not have to print the ticket, just show or say this e-ticket '
+                          html: ticketInfoEn || 'You do not have to print the ticket, just show or say this e-ticket '
                             + '#HT to the Administrator on the pier, and get a boarding ticket. '
                             + 'You need to come 15-20 minutes before the departure.',
                         },
