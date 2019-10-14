@@ -137,9 +137,9 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
                 },
               },
               {
-                block: 'link',
+                block: 'button',
                 mix: { block: 'email-web', elem: 'print' },
-                url: process.env.EMAIL_URL_PRINT,
+                attrs: { onCLick: 'window.print();' },
                 content: [
                   {
                     tag: 'b',
@@ -367,7 +367,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
                 content: 'Support service ',
               },
               {
-                html: '(09:00 &mdash; 01:00): ',
+                html: '&nbsp;(09:00 &mdash; 01:00): ',
               },
               {
                 block: 'link',

@@ -64,6 +64,7 @@ module.exports = config => {
           engineOptions: {
             elemJsInstances: true,
             runtimeLint: true,
+            production: process.env.NODE_ENV === 'production',
             requires: {
               dateFns: {
                 commonJS: 'date-fns',
