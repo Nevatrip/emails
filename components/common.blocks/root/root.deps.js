@@ -6,6 +6,7 @@
       elems: [
         'meta',
         'css',
+        'js',
         'conditional-comment'
       ]
     }
