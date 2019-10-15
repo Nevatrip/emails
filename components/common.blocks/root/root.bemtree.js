@@ -21,6 +21,7 @@ block( 'root' ).replace()( ( node, ctx ) => {
     doctype: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
     title: data.title || config.appName,
     styles: { elem: 'css', url: `/assets/css/${ data.page }-${ level }.min.css` },
+    scripts: { elem: 'js', url: `/assets/js/${ data.page }-${ level }.min.js` },
     mods: { route: data.view || data.page },
   };
 } );
