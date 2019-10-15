@@ -192,7 +192,6 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                     fontSize: '15px',
                     padding: '9px 3px 8px',
                     bgColor: 'transparent',
-                    url: process.env.EMAIL_URL_PRINT,
                     content: {
                       html: '<b>Печать</b>&nbsp;/&nbsp;Print',
                     },

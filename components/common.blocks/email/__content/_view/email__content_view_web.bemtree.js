@@ -143,7 +143,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
                   {
                     block: 'link',
                     mix: { block: 'email-web', elem: 'print' },
-                    url: process.env.EMAIL_URL_PRINT,
+                    url: `https://api.nevatrip.ru/orders/${ order.id }/print`,
                     content: [
                       {
                         tag: 'b',
