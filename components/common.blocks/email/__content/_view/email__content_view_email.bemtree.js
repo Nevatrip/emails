@@ -829,7 +829,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                     lineHeight: '30px',
                     align: 'center',
                     content: {
-                      html: ' (09:00 &mdash; 01:00)',
+                      html: ' (11:00 &mdash; 19:00)',
                     },
                   },
                   {

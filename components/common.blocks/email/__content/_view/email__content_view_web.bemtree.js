@@ -371,7 +371,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
                     content: 'Support service ',
                   },
                   {
-                    html: '(09:00 &mdash; 01:00): ',
+                    html: '(11:00 &mdash; 19:00): ',
                   },
                   {
                     block: 'link',

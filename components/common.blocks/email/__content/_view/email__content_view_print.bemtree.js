@@ -367,7 +367,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
                 content: 'Support service ',
               },
               {
-                html: '&nbsp;(09:00 &mdash; 01:00): ',
+                html: '&nbsp;(11:00 &mdash; 19:00): ',
               },
               {
                 block: 'link',
