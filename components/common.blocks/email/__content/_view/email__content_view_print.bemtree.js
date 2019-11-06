@@ -10,32 +10,32 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
           directions,
           title: {
             ru: {
-              name: nameRu,
+              name: nameRu = '',
               key: {
-                current: aliasRu,
-              },
-            },
+                current: aliasRu = '',
+              } = {},
+            } = {},
             en: {
-              name: nameEn,
+              name: nameEn = '',
               key: {
-                current: aliasEn,
-              },
-            },
-          },
+                current: aliasEn = '',
+              } = {},
+            } = {},
+          } = {},
           category: {
             title: {
               en: {
                 key: {
-                  current: categoryEn,
-                },
-              },
+                  current: categoryEn = '',
+                } = {},
+              } = {},
               ru: {
                 key: {
-                  current: categoryRu,
-                },
-              },
-            },
-          },
+                  current: categoryRu = '',
+                } = {},
+              } = {},
+            } = {},
+          } = {},
         },
         options,
       },
