@@ -9,10 +9,12 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
         product: {
           directions,
           title: {
-            ru: { name: nameRu },
-          },
+            ru: {
+              name: nameRu = '',
+            } = {},
+          } = '',
           partner: {
-            partnerContract: partnerNumber,
+            partnerContract: partnerNumber = '',
           } = {},
         },
         options,

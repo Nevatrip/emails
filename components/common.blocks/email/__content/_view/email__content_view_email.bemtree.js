@@ -8,33 +8,33 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
           directions,
           title: {
             ru: {
-              name: nameRu,
+              name: nameRu = '',
               key: {
-                current: aliasRu,
-              },
-            },
+                current: aliasRu = '',
+              } = {},
+            } = {},
             en: {
-              name: nameEn,
+              name: nameEn = '',
               key: {
-                current: aliasEn,
-              },
-            },
-          },
+                current: aliasEn = '',
+              } = {},
+            } = {},
+          } = {},
           category: {
             title: {
               en: {
                 key: {
-                  current: categoryEn,
-                },
-              },
+                  current: categoryEn = '',
+                } = {},
+              } = {},
               ru: {
                 key: {
-                  current: categoryRu,
-                },
-              },
-            },
-          },
-        },
+                  current: categoryRu = '',
+                } = {},
+              } = {},
+            } = {},
+          } = {},
+        } = {},
         options,
       },
     ] = order.products;
@@ -830,7 +830,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                     lineHeight: '30px',
                     align: 'center',
                     content: {
-                      html: ' (09:00 &mdash; 01:00)',
+                      html: ' (11:00 &mdash; 19:00)',
                     },
                   },
                   {
