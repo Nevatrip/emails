@@ -492,7 +492,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                         content: {
                           block: 'image',
                           url: 'https://nevatrip.ru/assets/img/email/ex.png',
-                          alt: '!&nbsp;',
+                          alt: '!',
                           attrs: {
                             style: 'vertical-align:middle;-ms-interpolation-mode:bicubic;clear:both;color:#6999cc;display:block;float:left;font-size:150px;font-weight:700;height:auto;line-height:150px;max-width:100%;outline:0;text-align:left;text-decoration:none;width:auto;',
                           },
@@ -639,7 +639,6 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                     block: 'link',
                     url: 'https://nevatrip.ru/skidki-i-akcii',
                     target: '_blank',
-                    alt: 'СПАСИБО',
                     attrs: {
                       width: '179',
                       height: '59',
@@ -651,6 +650,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                       url: 'https://nevatrip.ru/assets/img/email/btn-call-now-blue.png',
                       width: '179',
                       height: '59',
+                      alt: 'СПАСИБО',
                       attrs: {
                         align: 'center',
                         style: '-ms-interpolation-mode:bicubic;background:#f8d557;border: 0;border-radius: 59px;clear:both;color:#6890ce;display:inline-block;font-size:21px;font-weight:700;height:59px;line-height:59px;max-width:100%;outline:0;text-align:center;text-decoration:none;vertical-align:middle;width:179px;',
