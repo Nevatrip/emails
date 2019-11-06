@@ -53,6 +53,7 @@ block( 'email-unit' ).mod( 'type', 'button' )(
             content: {
               block: 'link',
               content: ctx.content,
+              url: ctx.url,
               attrs: {
                 style: ctx.styleLink,
               },
