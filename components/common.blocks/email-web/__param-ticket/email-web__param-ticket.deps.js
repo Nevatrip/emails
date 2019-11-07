@@ -5,6 +5,10 @@
       mods: {
         inline: 'yes',
       }
+    },
+    {
+      block: 'email-text',
+      mods: { tag: 'b' },
     }
   ],
 } ];

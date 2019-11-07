@@ -2,7 +2,8 @@ block( 'email-web' ).elem( 'param-ticket' )(
   content()( ( node, ctx ) =>
     [
       {
-        tag: 'b',
+        block: 'email-text',
+        mods: { tag: 'b' },
         content: ctx.name, //[Взрослый, Льготный, Детский, Иностранный, Дошкольный, Бесплатный, Групповой]
       },
       ctx.nameEn && {

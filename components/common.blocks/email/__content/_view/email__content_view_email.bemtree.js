@@ -275,7 +275,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                       letterSpacing: '.8px !important',
                       lineHeight: '50px !important',
                       textTransform: 'uppercase !important',
-                      content: `NT${ number }`,
+                      content: `НТ${ number }`,
                     },
                   }, // номер билета todo: если 2 номера то другой стиль
                   {
@@ -398,8 +398,18 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                     mods: { type: 'param' },
                     title: 'причал',
                     titleEn: 'place of departure',
-                    content: pierNameRu,
-                    contentEn: pierNameEn,
+                    content: {
+                      block: 'link',
+                      url: pierUrl,
+                      content: pierNameRu,
+                      target: '_blank',
+                    },
+                    contentEn: {
+                      block: 'link',
+                      url: pierUrl,
+                      content: pierNameEn,
+                      target: '_blank',
+                    },
                   }, // причал
                   // {
                   //   block: 'email-unit',
@@ -840,7 +850,9 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                   }, // spacer
                   {
                     block: 'link',
-                    url: 'tel:88122449824',
+                    url: 'tel:+78122449824',
+                    target: '_blank',
+                    value: '88122449824',
                     attrs: {
                       width: '200',
                       height: '46',

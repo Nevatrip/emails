@@ -176,7 +176,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
               {
                 elem: 'h1',
                 tag: 'h1',
-                content: `NT${ number }`,
+                content: `НТ${ number }`,
               },
               {
                 elem: 'h2',
@@ -312,8 +312,18 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
                     elem: 'param',
                     title: 'причал',
                     titleEn: 'place of departure',
-                    content: pierNameRu,
-                    contentEn: pierNameEn,
+                    content: {
+                      block: 'link',
+                      url: pierUrl,
+                      content: pierNameRu,
+                      target: '_blank',
+                    },
+                    contentEn: {
+                      block: 'link',
+                      url: pierUrl,
+                      content: pierNameEn,
+                      target: '_blank',
+                    },
                   }, // причал
                   // {
                   //   elem: 'param',
@@ -376,7 +386,9 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'web' )( {
                   {
                     block: 'link',
                     mix: { block: 'email-web', elem: 'tel' },
-                    url: 'tel:88122449824',
+                    url: 'tel:+78122449824',
+                    target: '_blank',
+                    value: '88122449824',
                     content: {
                       html: '8&nbsp;(812)&nbsp;244-98-24',
                     },
