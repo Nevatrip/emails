@@ -396,7 +396,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                   {
                     block: 'email-unit',
                     mods: { type: 'param' },
-                    title: 'причал',
+                    title: 'отправление',
                     titleEn: 'place of departure',
                     content: {
                       block: 'link',
@@ -410,7 +410,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'email' )( {
                       content: pierNameEn,
                       target: '_blank',
                     },
-                  }, // причал
+                  }, // отправление
                   // {
                   //   block: 'email-unit',
                   //   mods: { type: 'param' },

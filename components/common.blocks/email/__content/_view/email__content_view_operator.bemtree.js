@@ -244,7 +244,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
                   mods: { type: 'td' },
                   width: '200',
                   fontWeight: 'bold',
-                  content: 'Причал отправления: ',
+                  content: 'Отправление: ',
                 },
                 {
                   block: 'email-unit',
