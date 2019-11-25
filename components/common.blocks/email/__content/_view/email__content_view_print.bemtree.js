@@ -306,7 +306,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
               }, // время
               {
                 elem: 'param',
-                title: 'причал',
+                title: 'отправление',
                 titleEn: 'place of departure',
                 content: {
                   block: 'link',
@@ -320,7 +320,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
                   content: pierNameEn,
                   target: '_blank',
                 },
-              }, // причал
+              }, // отправление
               // {
               //   elem: 'param',
               //   title: 'места',
