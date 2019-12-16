@@ -46,7 +46,11 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
         direction,
         number,
         tickets,
-        event: { start },
+        event: {
+          start,
+          allDay = false,
+        },
+        schedule = [],
       },
     ] = options;
 
@@ -101,21 +105,28 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
     let dateRu;
     let dateEn;
 
-    const dateTs = ( new Date( start ) ).getTime() / 1000 + currentTimeOffsetTs; // получить timestamp даты прогулки
-    const hour = `0${ ( new Date( dateTs * 1000 ) ).getHours() }`.substr( -2 );// двузначное число часов старта прогулки
-    const minutes = `0${ ( new Date( dateTs * 1000 ) ).getMinutes() }`.substr( -2 );// двузначное число часов старта прогулки
-    const clock = `${ hour }:${ minutes }`;
+    const getClock = _start => {
+      const dateTs = ( new Date( _start ) ).getTime() / 1000 + currentTimeOffsetTs; // получить timestamp даты прогулки
+      const hour = `0${ ( new Date( dateTs * 1000 ) ).getHours() }`.substr( -2 );// двузначное число часов старта прогулки
+      const minutes = `0${ ( new Date( dateTs * 1000 ) ).getMinutes() }`.substr( -2 );// двузначное число часов старта прогулки
 
-    if ( hour > 21 ) {
-      dateRu = `В ночь с ${ convertTsToDay( dateTs ) } на ${ convertTsToDay( dateTs + 86400 ) }`;
-      dateEn = `On the night from ${ convertTsToDay( dateTs, 'en' ) } to ${ convertTsToDay( dateTs + 86400, 'en' ) }`;
-    } else if ( hour < 4 ) {
-      dateRu = dateRu = `В ночь с ${ convertTsToDay( dateTs - 86400 ) } на ${ convertTsToDay( dateTs ) }`;
-      dateEn = dateEn = `On the night from ${ convertTsToDay( dateTs - 86400, 'en' ) } to ${ convertTsToDay( dateTs, 'en' ) }`;
-    } else {
-      dateRu = convertTsToDay( dateTs );
-      dateEn = convertTsToDay( dateTs, 'en' );
+      if ( hour > 21 ) {
+        dateRu = `В ночь с ${ convertTsToDay( dateTs ) } на ${ convertTsToDay( dateTs + 86400 ) }`;
+        dateEn = `On the night from ${ convertTsToDay( dateTs, 'en' ) } to ${ convertTsToDay( dateTs + 86400, 'en' ) }`;
+      } else if ( hour < 4 ) {
+        dateRu = dateRu = `В ночь с ${ convertTsToDay( dateTs - 86400 ) } на ${ convertTsToDay( dateTs ) }`;
+        dateEn = dateEn = `On the night from ${ convertTsToDay( dateTs - 86400, 'en' ) } to ${ convertTsToDay( dateTs, 'en' ) }`;
+      } else {
+        dateRu = convertTsToDay( dateTs );
+        dateEn = convertTsToDay( dateTs, 'en' );
+      }
+
+      return `${ hour }:${ minutes }`
     }
+
+    const clock = allDay
+      ? schedule.map( event => getClock( event.start ) ).join( ', ' )
+      : getClock( start );
 
     return [
       {
@@ -251,8 +262,8 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'print' )( {
               }, // дата
               {
                 elem: 'param',
-                title: 'время',
-                titleEn: 'time',
+                title: allDay ? 'расписание' : 'время',
+                titleEn: allDay ? 'schedule' : 'time',
 
                 //одно направление, фиксированное время
                 content: clock,

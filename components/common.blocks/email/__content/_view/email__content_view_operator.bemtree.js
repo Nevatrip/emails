@@ -1,7 +1,6 @@
 block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
   content: node => {
     const order = node.data.api || {};
-
     const username = order.user.fullName;
 
     const [
@@ -26,7 +25,11 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
         direction,
         number,
         tickets,
-        event: { start },
+        event: {
+          start,
+          allDay = false,
+        },
+        schedule = [],
       },
     ] = options;
 
@@ -76,18 +79,25 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
 
     let dateRu;
 
-    const dateTs = ( new Date( start ) ).getTime() / 1000 + currentTimeOffsetTs; // получить timestamp даты прогулки
-    const hour = `0${ ( new Date( dateTs * 1000 ) ).getHours() }`.substr( -2 );// двузначное число часов старта прогулки
-    const minutes = `0${ ( new Date( dateTs * 1000 ) ).getMinutes() }`.substr( -2 );// двузначное число часов старта прогулки
-    const clock = `${ hour }:${ minutes }`;
+    const getClock = _start => {
+      const dateTs = ( new Date( _start ) ).getTime() / 1000 + currentTimeOffsetTs; // получить timestamp даты прогулки
+      const hour = `0${ ( new Date( dateTs * 1000 ) ).getHours() }`.substr( -2 );// двузначное число часов старта прогулки
+      const minutes = `0${ ( new Date( dateTs * 1000 ) ).getMinutes() }`.substr( -2 );// двузначное число часов старта прогулки
 
-    if ( hour > 21 ) {
-      dateRu = `В ночь с ${ convertTsToDay( dateTs ) } на ${ convertTsToDay( dateTs + 86400 ) }`;
-    } else if ( hour < 4 ) {
-      dateRu = dateRu = `В ночь с ${ convertTsToDay( dateTs - 86400 ) } на ${ convertTsToDay( dateTs ) }`;
-    } else {
-      dateRu = convertTsToDay( dateTs );
+      if ( hour > 21 ) {
+        dateRu = `В ночь с ${ convertTsToDay( dateTs ) } на ${ convertTsToDay( dateTs + 86400 ) }`;
+      } else if ( hour < 4 ) {
+        dateRu = dateRu = `В ночь с ${ convertTsToDay( dateTs - 86400 ) } на ${ convertTsToDay( dateTs ) }`;
+      } else {
+        dateRu = convertTsToDay( dateTs );
+      }
+
+      return `${ hour }:${ minutes }`
     }
+
+    const clock = allDay
+      ? schedule.map( event => getClock( event.start ) ).join( ', ' )
+      : getClock( start );
 
     return [ {
       block: 'email-unit',
@@ -231,7 +241,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator' )( {
                 {
                   block: 'email-unit',
                   mods: { type: 'td' },
-                  content: clock,
+                  content: allDay ? `билет на весь день (${ clock })` : clock,
                 },
               ],
             },
