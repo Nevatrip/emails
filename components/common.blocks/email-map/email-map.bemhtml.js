@@ -3,6 +3,7 @@ block( 'email-map' )(
   content()( ( node, ctx ) => [
     {
       block: 'link',
+      target: '_blank',
       url: ctx.link,
       attrs: {
         width: '540',
@@ -24,6 +25,7 @@ block( 'email-map' )(
       content: [
         {
           block: 'link',
+          target: '_blank',
           url: ctx.link,
           attrs: {
             style: 'font-size:19px;text-decoration:underline!important;color:#6999cc!important;margin:0;'
