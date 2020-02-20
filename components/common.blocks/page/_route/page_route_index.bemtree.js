@@ -48,5 +48,16 @@ block( 'page' )
       {
         tag: 'br',
       },
+      {
+        block: 'link',
+        url: `/notification?order=${ process.env.ORDER_ID }`,
+        content: 'NOTIFICATION',
+      },
+      {
+        tag: 'br',
+      },
+      {
+        tag: 'br',
+      },
     ],
   } );
