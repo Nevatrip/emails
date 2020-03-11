@@ -38,12 +38,11 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
 
     directions.forEach( ( { _key, tickets: _tickets, point: _point } ) => {
       if ( direction === _key ) {
-        pierNameEn = ( ( _point || {} ).title || {} ).en;
-
+        pierNameEn = ( ( _point || {} ).title || {} ).en
         _tickets.forEach( _ticket => {
           if ( tickets.hasOwnProperty( _ticket._key ) && tickets[ _ticket._key ] ) {
             ticketsInOrder.push( {
-              name: `${ _ticket.category.name.current === 'standart' ? '' : `${ _ticket.category.title }` }${ _ticket.name }`,
+              name: `${ _ticket.category.name.current === 'standart' ? '' : `${ _ticket.category.title.en }` }${ _ticket.ticket[ 0 ].title.en }`,
               count: tickets[ _ticket._key ],
             } )
           }
@@ -203,7 +202,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
                         },
                         color: '#486482',
                         content: [
-                          number && `Your order number: NT${ number }`,
+                          number && `Your order number: PT${ number }`,
                           number && { tag: 'br' },
                           nameEn && `Name: ${ nameEn }`,
                           nameEn && { tag: 'br' },

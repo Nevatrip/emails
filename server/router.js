@@ -8,6 +8,7 @@ const print = require( './routes/print' );
 const web = require( './routes/web' );
 const operator = require( './routes/operator' );
 const notification = require( './routes/notification' );
+const operatorEn = require( './routes/operator-en' );
 
 const router = new UniversalRouter(
   {
@@ -38,6 +39,11 @@ const router = new UniversalRouter(
         path: '/operator',
         name: 'operator',
         load: async () => await operator,
+      },
+      {
+        path: '/operator-en',
+        name: 'operator-en',
+        load: async () => await operatorEn,
       },
       {
         path: '/notification',
