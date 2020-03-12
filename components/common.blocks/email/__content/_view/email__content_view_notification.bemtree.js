@@ -19,7 +19,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
     const [
       {
         direction,
-        number,
+        //number,
         tickets,
         event: {
           start,
@@ -202,9 +202,9 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
                         },
                         color: '#486482',
                         content: [
-                          number && `Your order number: PT${ number }`,
-                          number && { tag: 'br' },
-                          nameEn && `Name: ${ nameEn }`,
+                          //number && `Your order number: PT${ number }`,
+                          //number && { tag: 'br' },
+                          nameEn && `${ nameEn }`,
                           nameEn && { tag: 'br' },
                           dateEn && `Date: ${ dateEn }`,
                           dateEn && { tag: 'br' },
