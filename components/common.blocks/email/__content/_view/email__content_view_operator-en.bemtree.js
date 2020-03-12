@@ -1,7 +1,7 @@
 block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
   content: node => {
     const order = node.data.api || {};
-    const username = order.user.fullName;
+    const username = ( ( order || {} ).user || {} ).fullName;
 
     const [
       {
