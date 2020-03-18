@@ -15,6 +15,6 @@ USER node
 
 COPY --chown=node:node . .
 
-RUN npm install --ignore-scripts
+RUN npm ci --ignore-scripts
 
 CMD [ "node" ]
