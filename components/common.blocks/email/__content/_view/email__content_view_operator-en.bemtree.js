@@ -47,7 +47,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
       if ( direction === _key ) {
         pierNameEn = _point.title.en;
         pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
-        directionTitle = _title;
+        directionTitle = _title.en;
 
         _tickets.forEach( _ticket => {
           if ( tickets.hasOwnProperty( _ticket._key ) ) {
@@ -312,12 +312,12 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
                   mods: { type: 'td' },
                   width: '200',
                   fontWeight: 'bold',
-                  content: 'Order number: ',
+                  content: 'Transaction number: ',
                 },
                 {
                   block: 'email-unit',
                   mods: { type: 'td' },
-                  content: number,
+                  content: `PT${ number }`,
                 },
               ],
             },
