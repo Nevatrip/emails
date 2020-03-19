@@ -40,13 +40,15 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
     let totalTickets = 0;
 
     const browserTimeOffsetTs = ( new Date() ).getTimezoneOffset() * 60;// смещение часового пояса относительно часового пояса UTC в секундаз для текущей локали
-    const tourTimeOffsetTs = -3*3600;
+    const tourTimeOffsetTs = -1*3600;
     const currentTimeOffsetTs = browserTimeOffsetTs - tourTimeOffsetTs;
 
     directions.forEach( ( { _key, tickets: _tickets, point: _point, title: _title } ) => {
       if ( direction === _key ) {
         pierNameEn = _point.title.en;
-        pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
+
+        //pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
+        pierUrl = `https://maps.google.com?saddr=Current+Location&daddr=${ _point.coords.lat },${ _point.coords.lng }`;
         directionTitle = _title.en;
 
         _tickets.forEach( _ticket => {
@@ -89,7 +91,8 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
       // } else if ( hour < 4 ) {
       //   dateRu = dateRu = `В ночь с ${ convertTsToDay( dateTs - 86400 ) } на ${ convertTsToDay( dateTs ) }`;
       // } else {
-        dateRu = convertTsToDay( dateTs );
+      dateRu = convertTsToDay( dateTs );
+
       // }
 
       return `${ hour }:${ minutes }`
@@ -262,6 +265,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
                   content: {
                     block: 'link',
                     url: pierUrl,
+                    target: 'blank',
                     content: pierNameEn,
                   },
                 },
