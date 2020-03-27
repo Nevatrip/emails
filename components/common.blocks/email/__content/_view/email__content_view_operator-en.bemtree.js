@@ -46,8 +46,10 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
     directions.forEach( ( { _key, tickets: _tickets, point: _point, title: _title } ) => {
       if ( direction === _key ) {
         pierNameEn = _point.title.en;
-        pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
-        directionTitle = _title;
+
+        //pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
+        pierUrl = `https://maps.google.com?saddr=Current+Location&daddr=${ _point.coords.lat },${ _point.coords.lng }`;
+        directionTitle = _title.en;
 
         _tickets.forEach( _ticket => {
           if ( tickets.hasOwnProperty( _ticket._key ) ) {
@@ -89,7 +91,8 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
       // } else if ( hour < 4 ) {
       //   dateRu = dateRu = `В ночь с ${ convertTsToDay( dateTs - 86400 ) } на ${ convertTsToDay( dateTs ) }`;
       // } else {
-        dateRu = convertTsToDay( dateTs );
+      dateRu = convertTsToDay( dateTs );
+
       // }
 
       return `${ hour }:${ minutes }`
@@ -262,6 +265,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
                   content: {
                     block: 'link',
                     url: pierUrl,
+                    target: 'blank',
                     content: pierNameEn,
                   },
                 },
@@ -312,12 +316,12 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
                   mods: { type: 'td' },
                   width: '200',
                   fontWeight: 'bold',
-                  content: 'Order number: ',
+                  content: 'Transaction number: ',
                 },
                 {
                   block: 'email-unit',
                   mods: { type: 'td' },
-                  content: number,
+                  content: `PT${ number }`,
                 },
               ],
             },
