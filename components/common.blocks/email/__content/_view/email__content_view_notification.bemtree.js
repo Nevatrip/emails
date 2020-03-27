@@ -33,7 +33,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
     let pierNameEn = '';
 
     const browserTimeOffsetTs = ( new Date() ).getTimezoneOffset() * 60;// смещение часового пояса относительно часового пояса UTC в секундаз для текущей локали
-    const tourTimeOffsetTs = -3*3600;
+    const tourTimeOffsetTs = -2*3600;
     const currentTimeOffsetTs = browserTimeOffsetTs - tourTimeOffsetTs;
 
     directions.forEach( ( { _key, tickets: _tickets, point: _point } ) => {
