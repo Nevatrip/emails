@@ -1,3 +1,37 @@
+/* Функция возвращает время в нужном формате. */
+const renderTime = date => {
+  if ( !date ) return;
+  return date.toLocaleTimeString( 'ru', { hour: '2-digit', minute: '2-digit' } );
+};
+
+/* Функция возвращает дату в нужном формате. */
+const renderDate = date => {
+  if ( !date ) return;
+
+  const hours = date.getHours();
+  const optionsWithoutYear = { day: 'numeric', month: 'long' };
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const newDay = new Date( date );
+
+  /* Если выбранное время находится в промежутке с 21 вечера до 4 часов ночи, то выводится дата в формате "в ночь с... на...". */
+  if ( hours > 21 ) {
+    const nextDay = newDay.setDate( date.getDate() + 1 );
+
+    return `On the night from
+        ${ new Intl.DateTimeFormat( optionsWithoutYear ).format( date ) }
+        to
+        ${ new Intl.DateTimeFormat( options ).format( nextDay ) }`;
+  } else if ( hours < 4 || hours === '0' ) {
+    const prevDay = newDay.setDate( date.getDate() - 1 );
+
+    return `On the night from
+        ${ new Intl.DateTimeFormat( optionsWithoutYear ).format( prevDay ) }
+        to
+        ${ new Intl.DateTimeFormat( options ).format( date ) }`;
+  }
+  return new Intl.DateTimeFormat( options ).format( date );
+};
+
 block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
   content: node => {
     const order = node.data.api || {};
@@ -6,12 +40,12 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
     const [
       {
         product: {
-          directions,
+          directions = [],
           title: {
             en: {
               name: nameEn = '',
             } = {},
-          } = '',
+          } = {},
           partner: {
             partnerContract: partnerNumber = '',
           } = {},
@@ -22,82 +56,49 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
 
     const [
       {
-        direction,
         number,
+        direction,
         tickets,
         event: {
           start,
           allDay = false,
+          timeOffset,
         },
-        schedule = [],
       },
     ] = options;
 
-    const ticketsInOrder = [];
-    let pierNameEn = '';
-    let pierUrl = '';
-    let directionTitle = '';
-    let totalTickets = 0;
+    const date = new Date( start );
 
-    const browserTimeOffsetTs = ( new Date() ).getTimezoneOffset() * 60;// смещение часового пояса относительно часового пояса UTC в секундаз для текущей локали
-    const tourTimeOffsetTs = -3*3600;
-    const currentTimeOffsetTs = browserTimeOffsetTs - tourTimeOffsetTs;
+    date.setMinutes( date.getMinutes() + date.getTimezoneOffset() - timeOffset );
 
-    directions.forEach( ( { _key, tickets: _tickets, point: _point, title: _title } ) => {
-      if ( direction === _key ) {
-        pierNameEn = _point.title.en;
-        pierUrl = `https://yandex.ru/maps/2/saint-petersburg/?ll=${ _point.coords.lng }%2C${ _point.coords.lat }&mode=whatshere&whatshere%5Bpoint%5D=${ _point.coords.lng }%2C${ _point.coords.lat }&whatshere%5Bzoom%5D=17&z=17`;
-        directionTitle = _title;
+    const dateRu = renderDate( date );
+    const clock = renderTime( date );
 
-        _tickets.forEach( _ticket => {
-          if ( tickets.hasOwnProperty( _ticket._key ) ) {
-            ticketsInOrder.push( {
-              name: `${ _ticket.category.name.current === 'standart' ? '' : `${ _ticket.category.title.en }` }${ _ticket.ticket[ 0 ].title.en }`,
-              count: tickets[ _ticket._key ] || 0,
-            } );
-            totalTickets += tickets[ _ticket._key ];
-          }
-        } )
-      }
-    } );
+    const _direction = directions.find( ( { _key } ) => _key === direction._key );
 
-    function convertTsToDay ( unixtimestamp, lang ) {
-      const monthsArr = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ];
-      const date = new Date( unixtimestamp*1000 + currentTimeOffsetTs );
-      const year = date.getFullYear();
-      const month = monthsArr[ date.getMonth() ];
-      const day = date.getDate();
-      let zero = '';
+    const {
+      title: {
+        en: directionTitle,
+      },
+      point: {
+        title: {
+          en: pierNameEn,
+        },
+        coords: {
+          lat,
+          lng,
+        },
+      },
+    } = _direction;
 
-      if ( day<10 ) {
-        zero = '0'
-      }
-      return lang === 'en'
-        ? `${ month }/${ zero }${ day }/${ year }`
-        : `${ zero }${ day }.${ month }.${ year }`;
-    }//dd.mm.yyyy/mm.dd.yyyy из timestamp
+    const pierUrl = `https://maps.google.com?saddr=Current+Location&daddr=${ lat },${ lng }`;
 
-    let dateRu;
+    const ticketsInOrder = _direction.tickets.map( item => ( {
+      count: tickets[ item._key ] || 0,
+      name: ( item.title || {} ).en || item.ticket.map( ( { title } ) => title.en ).join( ' + ' ),
+    } ) );
 
-    const getClock = _start => {
-      const dateTs = ( new Date( _start ) ).getTime() / 1000 + currentTimeOffsetTs; // получить timestamp даты прогулки
-      const hour = `0${ ( new Date( dateTs * 1000 ) ).getHours() }`.substr( -2 );// двузначное число часов старта прогулки
-      const minutes = `0${ ( new Date( dateTs * 1000 ) ).getMinutes() }`.substr( -2 );// двузначное число часов старта прогулки
-
-      // if ( hour > 21 ) {
-      //   dateRu = `В ночь с ${ convertTsToDay( dateTs ) } на ${ convertTsToDay( dateTs + 86400 ) }`;
-      // } else if ( hour < 4 ) {
-      //   dateRu = dateRu = `В ночь с ${ convertTsToDay( dateTs - 86400 ) } на ${ convertTsToDay( dateTs ) }`;
-      // } else {
-        dateRu = convertTsToDay( dateTs );
-      // }
-
-      return `${ hour }:${ minutes }`
-    }
-
-    const clock = allDay
-      ? schedule.map( event => getClock( event.start ) ).join( ', ' )
-      : getClock( start );
+    const totalTickets = ticketsInOrder.reduce( ( sum, { count } ) => sum += count, 0 )
 
     return [ {
       block: 'email-unit',
