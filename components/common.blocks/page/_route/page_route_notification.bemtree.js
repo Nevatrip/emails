@@ -3,16 +3,8 @@ block( 'page' )
     route: [
       {
         block: 'email',
-        elem: 'preamble',
-      },
-      {
-        block: 'email',
         elem: 'content',
         elemMods: { view: 'notification' },
-      },
-      {
-        block: 'email',
-        elem: 'ban-adaptability',
       },
       {
         block: 'email',

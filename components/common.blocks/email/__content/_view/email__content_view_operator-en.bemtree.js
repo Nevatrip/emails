@@ -263,6 +263,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
                   content: {
                     block: 'link',
                     url: pierUrl,
+                    target: 'blank',
                     content: pierNameEn,
                   },
                 },
@@ -313,12 +314,12 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'operator-en' )( {
                   mods: { type: 'td' },
                   width: '200',
                   fontWeight: 'bold',
-                  content: 'Order number: ',
+                  content: 'Transaction number: ',
                 },
                 {
                   block: 'email-unit',
                   mods: { type: 'td' },
-                  content: number,
+                  content: `PT${ number }`,
                 },
               ],
             },

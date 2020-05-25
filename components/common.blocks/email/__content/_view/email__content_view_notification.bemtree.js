@@ -89,7 +89,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
         mods: { type: 'container' },
         align: 'center',
         bgcolor: '#6999CC',
-        width: '600',
+        width: '320',
         content: [
           {
             block: 'email-unit',
@@ -100,7 +100,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
             block: 'email-unit',
             mods: { type: 'container' },
             align: 'center',
-            width: '570',
+            width: '290',
             horizonMargin: 'auto',
             content: {
               block: 'email-unit',
@@ -127,7 +127,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
             mods: { type: 'container' },
             align: 'center',
             bgcolor: '#FFFFFF',
-            width: '570',
+            width: '290',
             horizonMargin: 'auto',
             content: [
               {
@@ -138,7 +138,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
               {
                 block: 'email-unit',
                 mods: { type: 'container' },
-                width: '540',
+                width: '290',
                 align: 'center',
                 horizonMargin: 'auto',
                 content: [
