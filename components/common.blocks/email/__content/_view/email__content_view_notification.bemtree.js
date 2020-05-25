@@ -1,3 +1,38 @@
+/* Функция возвращает время в нужном формате. */
+const renderTime = date => {
+  if ( !date ) return;
+  return date.toLocaleTimeString( 'en', { hour: '2-digit', minute: '2-digit' } );
+};
+
+/* Функция возвращает дату в нужном формате. */
+const renderDate = date => {
+  if ( !date ) return;
+
+  const hours = date.getHours();
+  const optionsWithoutYear = { day: 'numeric', month: 'long' };
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const newDay = new Date( date );
+
+  /* Если выбранное время находится в промежутке с 21 вечера до 4 часов ночи, то выводится дата в формате "в ночь с... на...". */
+  if ( hours > 21 ) {
+    const nextDay = newDay.setDate( date.getDate() + 1 );
+
+    return `On the night from
+        ${ new Intl.DateTimeFormat( 'en-US', optionsWithoutYear ).format( date ) }
+        to
+        ${ new Intl.DateTimeFormat( 'en-US', options ).format( nextDay ) }`;
+  } else if ( hours < 4 || hours === '0' ) {
+    const prevDay = newDay.setDate( date.getDate() - 1 );
+
+    return `On the night from
+        ${ new Intl.DateTimeFormat( 'en-US', optionsWithoutYear ).format( prevDay ) }
+        to
+        ${ new Intl.DateTimeFormat( 'en-US', options ).format( date ) }`;
+  }
+  return new Intl.DateTimeFormat( 'en-US', options ).format( date );
+};
+
+
 block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
   content: node => {
     const order = node.data.api || {};
@@ -5,7 +40,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
     const [
       {
         product: {
-          directions,
+          directions = [],
           title: {
             en: {
               name: nameEn = '',
@@ -18,75 +53,31 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
 
     const [
       {
-        direction,
         number,
+        direction,
         tickets,
         event: {
           start,
-          allDay = false,
+          timeOffset,
         },
-        schedule = [],
       },
     ] = options;
 
-    const ticketsInOrder = [];
-    let pierNameEn = '';
+    const date = new Date( start );
 
-    const browserTimeOffsetTs = ( new Date() ).getTimezoneOffset() * 60;// смещение часового пояса относительно часового пояса UTC в секундаз для текущей локали
-    const tourTimeOffsetTs = -2*3600;
-    const currentTimeOffsetTs = browserTimeOffsetTs - tourTimeOffsetTs;
+    date.setMinutes( date.getMinutes() + date.getTimezoneOffset() - timeOffset );
 
-    directions.forEach( ( { _key, tickets: _tickets, point: _point } ) => {
-      if ( direction === _key ) {
-        pierNameEn = ( ( _point || {} ).title || {} ).en
-        _tickets.forEach( _ticket => {
-          if ( tickets.hasOwnProperty( _ticket._key ) && tickets[ _ticket._key ] ) {
-            ticketsInOrder.push( {
-              name: `${ _ticket.category.name.current === 'standart' ? '' : `${ _ticket.category.title.en }` }${ _ticket.ticket[ 0 ].title.en }`,
-              count: tickets[ _ticket._key ],
-            } )
-          }
-        } )
-      }
-    } );
+    const dateEn = renderDate( date );
+    const clock = renderTime( date );
 
-    function convertTsToDay ( unixtimestamp, lang ) {
-      const monthsArr = [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ];
-      const date = new Date( unixtimestamp*1000 + currentTimeOffsetTs );
-      const year = date.getFullYear();
-      const month = monthsArr[ date.getMonth() ];
-      const day = date.getDate();
-      let zero = '';
+    const _direction = directions.find( ( { _key } ) => _key === direction._key );
 
-      if ( day<10 ) {
-        zero = '0'
-      }
-      return lang === 'en'
-        ? `${ month }/${ zero }${ day }/${ year }`
-        : `${ zero }${ day }.${ month }.${ year }`;
-    }//dd.mm.yyyy/mm.dd.yyyy из timestamp
+    const pierNameEn = _direction.point.title.en;
 
-    let dateEn;
-
-    const getClock = _start => {
-      const dateTs = ( new Date( _start ) ).getTime() / 1000 + currentTimeOffsetTs; // получить timestamp даты прогулки
-      const hour = `0${ ( new Date( dateTs * 1000 ) ).getHours() }`.substr( -2 );// двузначное число часов старта прогулки
-      const minutes = `0${ ( new Date( dateTs * 1000 ) ).getMinutes() }`.substr( -2 );// двузначное число часов старта прогулки
-
-      if ( hour > 21 ) {
-        dateEn = `On the night from ${ convertTsToDay( dateTs, 'en' ) } to ${ convertTsToDay( dateTs + 86400, 'en' ) }`;
-      } else if ( hour < 4 ) {
-        dateEn = dateEn = `On the night from ${ convertTsToDay( dateTs - 86400, 'en' ) } to ${ convertTsToDay( dateTs, 'en' ) }`;
-      } else {
-        dateEn = convertTsToDay( dateTs, 'en' );
-      }
-
-      return `${ hour }:${ minutes }`
-    }
-
-    const clock = allDay
-      ? schedule.map( event => getClock( event.start ) ).join( ', ' )
-      : getClock( start );
+    const ticketsInOrder = _direction.tickets.map( item => ( {
+      count: tickets[ item._key ] || 0,
+      name: ( item.title || {} ).en || item.ticket.map( ( { title } ) => title.en ).join( ' + ' ),
+    } ) )
 
     return [ {
       block: 'email-unit',
@@ -211,7 +202,7 @@ block( 'email' ).elem( 'content' ).elemMod( 'view', 'notification' )( {
                           pierNameEn && `Place of departure: ${ pierNameEn }`,
                           pierNameEn && { tag: 'br' },
                           ticketsInOrder && 'Tickets: ',
-                          ticketsInOrder && ticketsInOrder.map( item => item.count && [
+                          ticketsInOrder && ticketsInOrder.map( item => item.count > 0 && [
                             `${ item.nameEn || item.name } — ${ item.count }; `,
                           ]
                           ),
